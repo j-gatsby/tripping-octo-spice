@@ -1,0 +1,115 @@
+0. What is pneumonoultramicroscopicsilicovolcanoconiosis?
+
+	-an obscure term ostensibly referring to a lung disease caused by silica dust, sometimes cited as one of the longest words in the English language.
+	*****http://dictionary.reference.com/browse/pneumonoultramicroscopicsilicovolcanoconiosis*****
+	
+	-According to Merriam-Webster's Medical Dictionary, pneumonoultramicroscopicsilicovolcanoconiosis is a pneumoconiosis caused by inhalation of very fine
+silicate or quartz dust.
+	*****pneumonoultramicroscopicsilicovolcanoconiosis.txt*****
+
+------------------------------------------------------------------------------------------------------
+
+1. According to its man page, what does getrusage do?
+
+	-returns resource usage measures
+	*****man getrusage*****
+	
+------------------------------------------------------------------------------------------------------
+
+2. Per that same man page, how many members are in a variable of type struct rusage?
+
+	-16.
+			struct rusage 
+			{
+               struct timeval ru_utime; /* user CPU time used */
+               struct timeval ru_stime; /* system CPU time used */
+               long   ru_maxrss;        /* maximum resident set size */
+               long   ru_ixrss;         /* integral shared memory size */
+               long   ru_idrss;         /* integral unshared data size */
+               long   ru_isrss;         /* integral unshared stack size */
+               long   ru_minflt;        /* page reclaims (soft page faults) */
+               long   ru_majflt;        /* page faults (hard page faults) */
+               long   ru_nswap;         /* swaps */
+               long   ru_inblock;       /* block input operations */
+               long   ru_oublock;       /* block output operations */
+               long   ru_msgsnd;        /* IPC messages sent */
+               long   ru_msgrcv;        /* IPC messages received */
+               long   ru_nsignals;      /* signals received */
+               long   ru_nvcsw;         /* voluntary context switches */
+               long   ru_nivcsw;        /* involuntary context switches */
+           	};
+           	*****man getrusage*****
+
+	
+------------------------------------------------------------------------------------------------------
+
+3. Why do you think we pass before and after by reference (instead of by value) to calculate, even though we’re not changing their contents?
+
+	-in order to keep the program moving as quickly as possible, as saving the values as variables and then calling that value again would take much longer.
+	
+------------------------------------------------------------------------------------------------------
+
+4. Explain as precisely as possible, in a paragraph or more, how main goes about reading words from a file. In other words, convince us that you indeed understand how that function’s for loop works.
+
+	-main first gets a char from the infile and checks that the char does not indicate the end of the file.  main then checks that the char is an alphabetical character.  
+		If it is, the char is saved at the current word[index] and the index is incremented.  main then loops back and gets the next char from the infile.  
+		This continues until the char either:
+				* indicates the end of file
+				* is not an alphabetical character
+				* indicates the end of the word
+		or until the [index], or length of the current string of chars, is longer than the longest possible word.  
+		In this case, chars will continue to be read in until one of the 3 conditions above is met, and then the entire string is simply ignored.
+		
+		If the char is not alphabetical, but is numeric, chars will continue to be read in, as long as they are alphanumeric and do not indicate the end of the file.
+		Once the end of this string is met, the entire string is also simply ignored.
+		
+		If the char being read in is not alphanumeric, it indicates the end of a word, and main will terminate the current word by adding '\0' as the final char in the string.
+		So, the last [index] in every word will be:
+				word[index == (length of word + 1)] == '\0'
+		The word counter is then incremented.
+		
+		The check() function runs at this point and the word is checked against the words loaded in from the dictionary.  If the word matches one in the dictionary, the bool misspelled will remain false.  
+		If there is no match, the bool misspelled is set to true.  The time is checked with getrusage both before and after the check() function runs, and then the ti_check benchmark is calculated and
+		updated.
+		
+		If the word is misspelled, it is printed to the terminal and the misspellings counter is incremented.
+		
+		main then prepares for the next word by setting the index to 0.
+		
+		This completes the for loop, which then get the next char from the infile and repeats the process.
+	
+------------------------------------------------------------------------------------------------------
+
+5. Why do you think we used fgetc to read each word’s characters one at a time rather than use fscanf with a format string like "%s" to read whole words at a time? 
+	Put another way, what problems might arise by relying on fscanf alone?
+
+	-each word ends with '\n' which would be included in the string when using fscanf.
+	
+------------------------------------------------------------------------------------------------------
+
+6. Why do you think we declared the parameters for check and load as const?
+
+	-this prevents the original dictionary from being modified, which would otherwise happen when using tolower.
+	
+------------------------------------------------------------------------------------------------------
+
+
+******************************************************************************************************
+
+7. What data structure(s) did you use to implement your spell-checker? Be sure not to leave your answer at just "hash table," "trie," or the like. Expound on what’s inside each of your "nodes."
+
+------------------------------------------------------------------------------------------------------
+
+8. How slow was your code the first time you got it working correctly?
+
+------------------------------------------------------------------------------------------------------
+
+9. What kinds of changes, if any, did you make to your code over the course of the week in order to improve its performance?
+
+------------------------------------------------------------------------------------------------------
+
+10. Do you feel that your code has any bottlenecks that you were not able to chip away at?
+
+------------------------------------------------------------------------------------------------------
+
+
