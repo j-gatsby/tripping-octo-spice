@@ -14,6 +14,23 @@
 #include "dictionary.h"
 
 unsigned int count = 0;
+
+unsigned int hash(const char* word)
+{
+	unsigned int hashval = 0;
+	char* string = tolower(word);
+	
+	for(; *string != '\0'; string++) 
+	{
+		hashval = *string + (hashval << 5) - hashval;
+	}
+
+    /* we then return the hash value mod the hashtable size so that it will
+     * fit into the necessary range
+     */
+    	index = hashval % count;
+    	return index;
+}
 /**
  * Returns true if word is in dictionary else false.
  */
@@ -28,7 +45,6 @@ bool check(const char* word)
  */
 bool load(const char* dictionary)
 {
-    // TODO
     // create data structures
     typedef struct node
     {

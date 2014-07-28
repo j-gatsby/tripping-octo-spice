@@ -12,12 +12,14 @@
 
 #include <stdbool.h>
 #include <stdio.h>
-#include <stdint.h>
+#include <stdint.h> 
 
 // maximum length for a word
 // (e.g., pneumonoultramicroscopicsilicovolcanoconiosis)
 #define LENGTH 45
 
+
+unsigned int hash(const char* word);
 /**
  * Returns true if word is in dictionary else false.
  */
