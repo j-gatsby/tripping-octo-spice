@@ -71,13 +71,34 @@ bool load(const char* dictionary)
     while (!feof(dptr))
 	{
 	    // malloc new node* n for each word
+    	node *new_node=malloc(sizeof(node));
+    	if (new_node == NULL)
+    	{
+    		return false;
+    	}
     	
     	// use fscanf to read in one word at a time 
-    
+    	fscanf(dptr, "%s", new_node->word);
+    	
+    	// declare index variable ??? and set to NULL for each pass ???
+    	unsigned int index = NULL;
+    	
     	// hash n->word
+    	index = hash(word);
     	
     	// insert node into hash table
-    	
+    	if(hashtable[index] == NULL)
+    	{
+    		// no linked list exists
+    		hashtable[index]->new_node;
+    		new_node->next = NULL;
+    	}
+    	else
+    	{
+    		// linked list exists, so add to beginning of list
+    		new_node->next = hashtable[index];
+    		hashtable[index] = new_node;
+    	}
     }
     
     // fclose dictionary file
