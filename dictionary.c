@@ -44,7 +44,19 @@ bool check(const char* word)
     	return false;
     }
     else
+    node *cursor = hashtable[hash(string)]->ptr_node;
     
+    while(cursor != NULL)
+    {
+    	// strcmp string and word
+    	
+    		// if ==, return true;
+    		
+    		else
+    		{
+    			cursor = cursor->next;
+    		}
+    }
 }
 
 /**
