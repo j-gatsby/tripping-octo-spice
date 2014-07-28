@@ -11,6 +11,7 @@
 
 #include "dictionary.h"
 
+unsigned int count;
 /**
  * Returns true if word is in dictionary else false.
  */
@@ -26,6 +27,33 @@ bool check(const char* word)
 bool load(const char* dictionary)
 {
     // TODO
+    // create data structures
+    
+    // open dictionary file
+    FILE* dptr = fopen("DICTIONARY", "r");
+    
+    // ensure it worked
+    if (dptr == NULL)
+    {
+    	fclose(dptr);
+    	printf("Unable to open DICTIONARY file\n");
+    	return 2;
+    }
+    
+    // iterate over dictionary file
+    
+    	// malloc new node* n for each word
+    	
+    	// use fscanf to read in one word at a time 
+    
+    	// hash n->word
+    	
+    	// insert node into hash table
+    	
+    	// counter for words inserted
+    	count++;
+    	
+    // fclose dictionary file
     return false;
 }
 
@@ -34,8 +62,7 @@ bool load(const char* dictionary)
  */
 unsigned int size(void)
 {
-    // TODO
-    return 0;
+    return count;
 }
 
 /**
