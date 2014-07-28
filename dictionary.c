@@ -10,6 +10,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdint.h>
+#include <string.h>
 
 #include "dictionary.h"
 
@@ -49,13 +50,23 @@ bool check(const char* word)
     while(cursor != NULL)
     {
     	// strcmp string and word
+    	char str1[LENGTH + 1];
+    	char str2[LENGTH + 1];
+    	int sameString;
     	
-    		// if ==, return true;
-    		
-    		else
-    		{
-    			cursor = cursor->next;
-    		}
+    	strcpy(str1, hashtable[hash(word)]->ptr_node);
+    	strcpy(str2, hashtable[hash(string)]->ptr_node);
+    	
+    	sameString = strcmp(str1, str2);
+    	
+    	if(sameString == 0)
+    	{
+    		return true;
+    	}
+    	else
+    	{
+    		cursor = cursor->next;
+    	}
     }
 }
 
@@ -161,6 +172,27 @@ unsigned int size(void)
  */
 bool unload(void)
 {
-    // TODO
-    return false;
+    int nodesFree=0;
+    
+    for(int i = 0; i < count; i++)
+    {
+    	node *cursor = hashtable[i]->ptr_node;
+    	
+    	while(cursor != NULL)
+    	{
+    		node *temp = cursor;
+    		cursor = cursor->next;
+    		free(temp);
+    		nodesFree++;
+    	}
+    }
+  
+  	if (nodesFree == count)
+  	{
+  		return true;
+  	}  
+  	else
+  	{
+    	return false;
+    }
 }
