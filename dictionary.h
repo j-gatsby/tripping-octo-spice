@@ -10,10 +10,12 @@
 #ifndef DICTIONARY_H
 #define DICTIONARY_H
 
+#include <stdlib.h>
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdint.h> 
 #include <string.h>
+#include <ctype.h>
 
 // maximum length for a word
 // (e.g., pneumonoultramicroscopicsilicovolcanoconiosis)

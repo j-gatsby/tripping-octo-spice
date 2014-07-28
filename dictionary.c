@@ -6,24 +6,36 @@
  *
  * Implements a dictionary's functionality.
  ***************************************************************************/
-
+#include <stdlib.h>
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdint.h>
 #include <string.h>
+#include <ctype.h>
 
 #include "dictionary.h"
 
+// create data structures
+    typedef struct node
+    {
+    	char entry[LENGTH + 1];
+    	struct node *next;
+    }node;
+    
+node *hashtable = NULL;
+node *cursor = NULL;
+node *ptr_node = NULL;
+unsigned int hashResult;
+unsigned int hashCheck;
 unsigned int count = 0;
 
 unsigned int hash(const char* word)
 {
 	unsigned int hashValue = 0;
-	char* string = tolower(word);
 	
-	for(; *string != '\0'; string++) 
+	for(; *word != '\0'; word++) 
 	{
-		hashval = *string + (hashValue << 5) - hashValue;
+		hashValue = *word + (hashValue << 5) - hashValue;
 	}
 
     /* we then return the hash value mod the hashtable size so that it will
@@ -38,14 +50,11 @@ unsigned int hash(const char* word)
 bool check(const char* word)
 {
     // TODO
-    char *string = tolower(word);
+    hashCheck = hash(word);
     
-    if(hashtable[hash(string)] == NULL)
-    {
-    	return false;
-    }
-    else
-    node *cursor = hashtable[hash(string)]->ptr_node;
+    node *cursor;
+    cursor = &hashtable[hashCheck];
+    cursor = ptr_node;
     
     while(cursor != NULL)
     {
@@ -54,8 +63,8 @@ bool check(const char* word)
     	char str2[LENGTH + 1];
     	int sameString;
     	
-    	strcpy(str1, hashtable[hash(word)]->ptr_node);
-    	strcpy(str2, hashtable[hash(string)]->ptr_node);
+    	strcpy(str1, word);
+    	strcpy(str2, cursor->entry);
     	
     	sameString = strcmp(str1, str2);
     	
@@ -68,6 +77,7 @@ bool check(const char* word)
     		cursor = cursor->next;
     	}
     }
+    return false;
 }
 
 /**
@@ -75,13 +85,6 @@ bool check(const char* word)
  */
 bool load(const char* dictionary)
 {
-    // create data structures
-    typedef struct node
-    {
-    	char word[LENGTH + 1];
-    	struct node *next;
-    }node;
-    
     // open dictionary file
     FILE* dptr = fopen("DICTIONARY", "r");
     
@@ -117,38 +120,34 @@ bool load(const char* dictionary)
     while (!feof(dptr))
 	{
 	    // malloc new node* n for each word
-    	node new_node=malloc(sizeof(node));
+    	node* new_node = malloc(sizeof(node));
     	if (new_node == NULL)
     	{
     		return false;
     	}
     	
     	// use fscanf to read in one word at a time 
-    	fscanf(dptr, "%s", new_node->word);
+    	fscanf(dptr, "%s", new_node->entry);
     	
     	// convert word tolower
-    	new_node->word = tolower(new_node->word);
+    	//new_node->word = tolower(new_node->word);
     	
-    	// declare index variable ??? and set to NULL for each pass ???
-    	unsigned int hashResult = NULL;
-    	
-    	// hash new_node->word
-    	hashResult = hash(new_node->word);
+    	// hash new_node->entry
+    	hashResult = hash(new_node->entry);
     	
     	// insert node into hash table
-    	if(hashtable[hashResult] == NULL)
+    	if(ptr_node == NULL)
     	{
     		// no linked list exists
-    		node *ptr_node = &new_node;
-    		hashtable[hashResult]->ptr_node;
-    		new_node->next = NULL; 
+    		new_node->next = ptr_node;
+    		ptr_node = new_node; 
+    		new_node->next = NULL;
     	}
     	else
     	{
     		// linked list exists, so add to beginning of list
-    		new_node->next = &ptr_node;
-    		hashtable[hashResult] ->ptr_node;
-    		ptr_node = &new_node;
+    		new_node->next = ptr_node;
+    		ptr_node = new_node;
     	}
     }
     
@@ -176,7 +175,8 @@ bool unload(void)
     
     for(int i = 0; i < count; i++)
     {
-    	node *cursor = hashtable[i]->ptr_node;
+    	node *cursor = &hashtable[i];
+    	cursor = ptr_node;
     	
     	while(cursor != NULL)
     	{
