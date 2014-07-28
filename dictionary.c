@@ -17,19 +17,19 @@ unsigned int count = 0;
 
 unsigned int hash(const char* word)
 {
-	unsigned int hashval = 0;
+	unsigned int hashValue = 0;
 	char* string = tolower(word);
 	
 	for(; *string != '\0'; string++) 
 	{
-		hashval = *string + (hashval << 5) - hashval;
+		hashval = *string + (hashValue << 5) - hashValue;
 	}
 
     /* we then return the hash value mod the hashtable size so that it will
      * fit into the necessary range
      */
-    	index = hashval % count;
-    	return index;
+    	hashResult = hashValue % count;
+    	return hashResult;
 }
 /**
  * Returns true if word is in dictionary else false.
@@ -37,7 +37,14 @@ unsigned int hash(const char* word)
 bool check(const char* word)
 {
     // TODO
-    return false;
+    char *string = tolower(word);
+    
+    if(hashtable[hash(string)] == NULL)
+    {
+    	return false;
+    }
+    else
+    
 }
 
 /**
@@ -87,7 +94,7 @@ bool load(const char* dictionary)
     while (!feof(dptr))
 	{
 	    // malloc new node* n for each word
-    	node *new_node=malloc(sizeof(node));
+    	node new_node=malloc(sizeof(node));
     	if (new_node == NULL)
     	{
     		return false;
@@ -96,24 +103,29 @@ bool load(const char* dictionary)
     	// use fscanf to read in one word at a time 
     	fscanf(dptr, "%s", new_node->word);
     	
-    	// declare index variable ??? and set to NULL for each pass ???
-    	unsigned int index = NULL;
+    	// convert word tolower
+    	new_node->word = tolower(new_node->word);
     	
-    	// hash n->word
-    	index = hash(word);
+    	// declare index variable ??? and set to NULL for each pass ???
+    	unsigned int hashResult = NULL;
+    	
+    	// hash new_node->word
+    	hashResult = hash(new_node->word);
     	
     	// insert node into hash table
-    	if(hashtable[index] == NULL)
+    	if(hashtable[hashResult] == NULL)
     	{
     		// no linked list exists
-    		hashtable[index]->new_node;
-    		new_node->next = NULL;
+    		node *ptr_node = &new_node;
+    		hashtable[hashResult]->ptr_node;
+    		new_node->next = NULL; 
     	}
     	else
     	{
     		// linked list exists, so add to beginning of list
-    		new_node->next = hashtable[index];
-    		hashtable[index] = new_node;
+    		new_node->next = &ptr_node;
+    		hashtable[hashResult] ->ptr_node;
+    		ptr_node = &new_node;
     	}
     }
     
