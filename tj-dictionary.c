@@ -32,12 +32,10 @@
  	}hashtable;
  	
 FILE* dptr = NULL;
-//node *hashtable = NULL;
+
 unsigned int wordCount = 0;
- hashtable spellChecker;
-//node *cursor = NULL;
-//node *ptr_node = NULL;
-//node *hashPointer;
+ hashtable hashTable;
+
 unsigned int hashResult;
 unsigned int hashCheck;
 
