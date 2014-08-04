@@ -22,14 +22,19 @@
 // create data structures
     typedef struct node
     {
-    	char entry[LENGTH + 1];
+    	char *entry;
     	struct node *next;
     }node;
  
+ 	typedef struct hashtable
+ 	{
+ 		char *hashEntry;
+ 	}hashtable;
+ 	
 FILE* dptr = NULL;
 //node *hashtable = NULL;
 unsigned int wordCount = 0;
-node *hashTable;
+ hashtable spellChecker;
 //node *cursor = NULL;
 //node *ptr_node = NULL;
 //node *hashPointer;
@@ -97,7 +102,7 @@ bool load(const char* dictionary)
     	return false;
     }
     
-    int buffer[LENGTH +1];
+    int buffer;
     int chars_read = 0;
     int chars_in_word;
     int entry_to_node = 0;
@@ -120,8 +125,6 @@ bool load(const char* dictionary)
 			{
 				// increment counter for words in Dictionary
 				wordCount++;
-				// reset chars_in_word counter
-				chars_in_word = 0;
 			}
 			// if the end of the file is found
 			else if (buffer[chars_read] == EOF)
@@ -136,39 +139,53 @@ bool load(const char* dictionary)
     fseek(dptr, 0, SEEK_SET);
     printf("Reset file position indicator to start of file, and reset EOF flag.\n");
     
-    // initialize hash table
-    node *hashTable[wordCount];
-    printf("Initialized hashTable\n");
+    // index dictionary and store in memory
+    int dictionary[wordCount];
+    printf("Initialized dictionary array.\n");
+    int wordsEntered = 0;
     
-    // set each element in hashtable to NULL
-    for (int i = 0; i < wordCount; i++)
-    {
-    	hashTable[i] = NULL;
-    }
-    printf("Each element in hashTable set to NULL\n");
-    
-    /* iterate over dictionary file
-    while (feof(dptr) == 0)
-	{
-	    // malloc new node* n for each word
-    	node* new_node = malloc(sizeof(node));
-    	if (new_node == NULL)
-    	{
-    	  	printf("new_node was NULL\n");							// for debugging
-    		return false;
-    	}
-    	*/
-    	// temporary storage
-    	//char *temp = NULL;
-    	
-    	// use fscanf to read in one word at a time, to temp storage
-    	//fgetc(dptr, "%s", new_node->entry);
-    	//printf("Reading in one string at a time....\n");
-		
-		// save copy of word read in from DICTIONARY    	
-    	 //strcpy(new_node->entry, temp);
-    	   // until the end of the file is reached...
     while (feof(dptr) == 0)	
+    {
+    	// clear out the buffer
+    	memset(buffer, '\0', sizeof(buffer));
+    	
+		for (chars_read =0;  chars_read < LENGTH + 1; chars_read++)
+		{
+			// read card to buffer, one byte at a time
+			fread(&buffer[chars_read], sizeof(char), 1, dptr);
+
+			// if the end of a word is found
+			if (buffer[chars_read] == '\n')
+			{
+				buffer[chars_read] = '\0';
+				dictionary[wordsEntered] = buffer;
+				// increment counter for words entered in dictionary[]
+				wordsEntered++;
+				// clear out the buffer
+    			memset(buffer, '\0', sizeof(buffer));
+			}
+			// if the end of the file is found
+			else if (buffer[chars_read] == EOF)
+			{
+				printf("The End of the File has been reached.\n ");
+    		}
+    	}
+    }
+    printf("%d words entered into dictionary[]\n", wordsEntered);
+    
+    //initialize hashtable
+    hashtable *hashTable[wordCount];
+    printf("Creating hashtable...\n");
+   
+    // set each element in hashtable to NULL
+    for (int index= 0; index < wordCount; index++)  
+    {
+			hashTable[index] = NULL;
+   	}
+    printf("hashTable initalized.\n");
+     
+   // load words from dictionary into hashTable
+   for (int i = 0; i < wordCount; i++)
     {
     	 // malloc new node* n for each word
     	node* new_node = malloc(sizeof(node));
@@ -178,58 +195,36 @@ bool load(const char* dictionary)
     		return false;
     	}
     	
-		for (chars_read =0;  buffer[chars_read] != '\n'; chars_read++)
-		{
-			// read card to buffer, one byte at a time
-			fread(&buffer[chars_read], sizeof(char), 1, dptr);
-			
-				for (int i = 0; i < (chars_read); i++)
-				{
-					new_node->entry[i] = buffer[i];
-				}
-				new_node->entry[chars_read] = '\0';
+		new_node->entry  = &dictionary[i];
 				
-				entry_to_node++;
-				
-    	
-				// reset chars_in_word counter
-				//chars_in_word = 0;
-				printf("new_node->entry = %s\n", new_node->entry);
-  			   printf("Entry Added to New Node = %d\n", entry_to_node);					// for debugging
+		printf("%s = ", new_node->entry);							// for debugging
     
-    	
-    			// hash new_node->entry
-    			hashResult = hash(new_node->entry);
-    			printf("Hashing the new entry...\n");
-    	
-    			// insert node into hash table
-   			 	if(hashTable[hashResult] == NULL)
-				{
-					printf("Attempting to insert entry into hashTable...\n");
-					// no linked list exists
-					new_node->next = NULL;
-					hashTable[hashResult] = new_node;
-					//hashTable[hashResult]->entry = new_node->entry;
-					insertCount++;
-					printf("Successful entry!\n");
-				}
-				else
-				{	// linked list exists, so add to beginning of list
-					printf("Attempting to add entry on to LinkedList...\n"); 
-					new_node->next = hashTable[hashResult]->next;
-					hashTable[hashResult] = new_node;
-					//hashTable[hashResult]->entry= new_node->entry;
-					insertCount++;
-					printf("Successful addition!\n");
-				}
-				
-			}
-		// clear out the buffer
-   			 	memset(buffer, '\0', sizeof(buffer));
+		// hash new_node->entry
+		hashResult = hash(new_node->entry);
+		printf("%d\n", hashResult);
+
+		// insert node into hash table
+	 	if(hashTable[hashResult] == NULL)
+		{
+			printf("Attempting to insert entry into hashTable...\n");
+			// no linked list exists
+			new_node->next = NULL;
+			hashTable[hashResult] = &new_node->entry;
+			insertCount++;
+			printf("Successful entry!\n");
+		}
+		else
+		{	// linked list exists, so add to beginning of list
+			printf("Attempting to add entry on to LinkedList...\n"); 
+			new_node->next = hashTable[hashResult];
+			hashTable[hashResult]= &new_node->entry;
+			insertCount++;
+			printf("Successful addition!\n");
+		}	
     }
     printf("Words inserted into hashtable: %i\n", insertCount);
     
-    // fclose dictionary file
+   // fclose dictionary file
     fclose(dptr);
       	printf("dptr was closed successfully\n");							// for debugging
     // set bool to true
@@ -252,6 +247,7 @@ bool unload(void)
     int nodesFree=0;
     node *previousNode;
     node *currentNode;
+    int hashtableFree=0;
     
     for(int i = 0; i < wordCount; i++)
     {
@@ -265,12 +261,13 @@ bool unload(void)
     		nodesFree++;
     	}
     		free(&hashTable[i]);
-    		nodesFree++;
+    		hashtableFree++;
     }
     free(hashTable);
   	if (hashTable == NULL)
   	{
   		printf("Total nodesFree = %d\n", nodesFree);
+  		printf("Total hashtableFree = %d\n", hashtableFree);
   		return true;
   	}  
   	else return false;

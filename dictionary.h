@@ -17,9 +17,13 @@
 #include <string.h>
 #include <ctype.h>
 
+
 // maximum length for a word
 // (e.g., pneumonoultramicroscopicsilicovolcanoconiosis)
 #define LENGTH 45
+
+// default dictionary
+#define DICTIONARY "home/cs50/pset6/dictionaries/large"
 
 
 unsigned int hash(const char* word);

@@ -1,0 +1,8 @@
+This is the test text for csfifty-> pset six -> mispellings.
+
+I am just writing a few short sentences and then adding most of the words in this file into DICTIONARY.
+
+The dictionary file was completely blank after running make.  It appears that i am either unable to 
+download the csfifty dictionaries, or more likely, I am not coding that part of my program correctly.  
+
+This concludes the test text.

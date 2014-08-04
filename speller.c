@@ -17,7 +17,7 @@
 #undef getrusage
 
 // default dictionary
-#define DICTIONARY "/home/cs50/pset6/dictionaries/large"
+#define DICTIONARY "home/cs50/pset6/dictionaries/large"
 
 // prototype
 double calculate(const struct rusage* b, const struct rusage* a);
@@ -40,7 +40,7 @@ int main(int argc, char* argv[])
     // determine dictionary to use
     char* dictionary = (argc == 3) ? argv[1] : DICTIONARY;
 
-    // load dictionary
+    // load dictionary 
     getrusage(RUSAGE_SELF, &before);
     bool loaded = load(dictionary);
     getrusage(RUSAGE_SELF, &after);

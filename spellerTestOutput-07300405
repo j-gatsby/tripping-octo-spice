@@ -1,0 +1,148 @@
+// Wednesday, 30JULY14@0405 ET
+
+jharvard@appliance (~/Dropbox/pset6): ./speller DICTIONARY test.txt
+Words inserted into hashtable: 0
+dptr was closed successfully
+
+MISSPELLED WORDS
+
+ = 388
+This
+ = 360
+is
+ = 421
+the
+ = 398
+test
+ = 123
+text
+ = 97
+for
+ = 164
+csfifty
+ = 34
+pset
+ = 370
+six
+ = 191
+mispellings
+ = 73
+I
+ = 106
+am
+ = 374
+just
+ = 122
+writing
+ = 97
+a
+ = 222
+few
+ = 0
+short
+ = 206
+sentences
+ = 407
+and
+ = 261
+then
+ = 55
+adding
+ = 131
+most
+ = 103
+of
+ = 421
+the
+ = 239
+words
+ = 355
+in
+ = 390
+this
+ = 166
+file
+ = 2
+into
+ = 270
+DICTIONARY
+ = 199
+The
+ = 378
+dictionary
+ = 166
+file
+ = 91
+was
+ = 58
+completely
+ = 100
+blank
+ = 280
+after
+ = 115
+running
+ = 174
+make
+ = 229
+It
+ = 358
+appears
+ = 143
+that
+ = 105
+i
+ = 106
+am
+ = 31
+either
+ = 61
+unable
+ = 267
+to
+ = 192
+download
+ = 421
+the
+ = 164
+csfifty
+ = 368
+dictionaries
+ = 115
+or
+ = 85
+more
+ = 130
+likely
+ = 73
+I
+ = 106
+am
+ = 47
+not
+ = 398
+coding
+ = 143
+that
+ = 339
+part
+ = 103
+of
+ = 60
+my
+ = 382
+program
+ = 129
+correctly
+ = 388
+This
+ = 292
+concludes
+ = 421
+the
+ = 398
+test
+ = 123
+text
+Could not unload DICTIONARY.
+
