@@ -22,14 +22,14 @@
 // create data structures
     typedef struct node
     {
-    	char entry[LENGTH + 1];
+    	char *entry;
     	struct node *next;
     }node;
  
  	typedef struct hashtable
  	{
  		int size;
- 		node **first;
+ 		node **table;
  	}hashtable;
  
 FILE* dptr = NULL;
@@ -53,13 +53,13 @@ hashtable *createHashTable(int size)
     }
     
     /* Attempt to allocate memory for the table itself */
-    if ((new_table->first = malloc(sizeof(node *) * size)) == NULL) {
+    if ((new_table->table = malloc(sizeof(node *) * size)) == NULL) {
         return NULL;
     }
 
     /* Initialize the elements of the table */
-    for(int i=0; i<size; i++) new_table->first[i] = NULL;
-    
+    for(int i=0; i<size; i++) new_table->table[i] = NULL;
+
     /* Set the table's size */
     new_table->size = size;
 
@@ -75,8 +75,8 @@ unsigned int hash(const char* word)
 
     /* for each character, we multiply the old hash by 31 and add the current
      * character.  Remember that shifting a number left is equivalent to 
-     * multiplying it by NULL raised to the number of places shifted.  So we 
-     * are in effect multiplying hashval by 3NULL and then subtracting hashval.  
+     * multiplying it by 2 raised to the number of places shifted.  So we 
+     * are in effect multiplying hashval by 32 and then subtracting hashval.  
      * Why do we do this?  Because shifting and subtraction are much more 
      * efficient operations than multiplication.
      */
@@ -94,12 +94,15 @@ unsigned int hash(const char* word)
 
 bool check(const char* word)
 {
-	printf("word = %s\n", word);	
-	hashResult = hash(word);
-	if(hashResult < 0 || hashResult > wordCount){return false;}
-	node *currentNode = hashTable->first[hashResult];
-	//printf("%s is the currentNode->entry @ %i: \n", currentNode->entry, hashResult);
-    for (int loopEscape = 0; currentNode != NULL; loopEscape++)
+	unsigned int hashResult = hash(word);
+	
+	node *currentNode = NULL;
+	node *ptrNode = NULL;
+	ptrNode->next = hashTable->table[hashResult];
+	currentNode = ptrNode->next;
+	
+	printf("%s is the currentNode->entry\n", currentNode->entry);
+    for(int loopCount = 0; currentNode->entry != NULL; currentNode = currentNode->next)
     {
     	// strcmp entry and word
     	int comp = strcmp(word, currentNode->entry);
@@ -108,16 +111,14 @@ bool check(const char* word)
     	{
     		return true;
     	}
-    	if(comp == 1 || comp == -1)
+    	else if(comp == 1)
     	{
-    		currentNode = currentNode->next;
+    		loopCount++;
     	}
-    	if (loopEscape > 10)
+    	if (loopCount > 1)
     	{
-    		//printf("Had to use loopEscape with %s\n", currentNode->entry);
     		return false;
     	}
-    	else return false;
     } 
     return false;
 }
@@ -148,7 +149,7 @@ bool load(const char* dictionary)
 		{
 			// read card to buffer, one byte at a time
 			fread(&buffer[chars_read], sizeof(char), 1, dptr);
-			 
+			
 			// if the end of a word is found
 			if (buffer[chars_read] == '\n')
 			{
@@ -176,9 +177,9 @@ bool load(const char* dictionary)
     int wordsEntered = 0;
    
     //initialize hashtable
-    hashTable = createHashTable(wordCount + 1);
-//    printf("Creating hashtable...\n")
-
+    hashTable = createHashTable(wordCount);
+//    printf("Creating hashtable...\n");
+     
    // load words from dictionary into hashTable
    for (int i = 0; i < wordCount; i++)
     {
@@ -191,24 +192,24 @@ bool load(const char* dictionary)
     		return false;
     	}
     //	printf("done.\n");
-  
+   	
     	//char  temp[LENGTH + 1];
     	//char* fmt = "%[^\n]%*c";
     	//memset(temp, '\0', sizeof(temp));
     	//fgets(temp, sizeof(temp), dptr);
     	//fscanf(dptr,  fmt, temp);
  		//printf("fgets next word from dptr... \n");
-		//char word[LENGTH + 1];
+		char word[LENGTH+1];
 		int index = 0;
-
+		int endWord = 0;
     	// spell-check each word in text
-    for (int c = fgetc(dptr); c != EOF; c = fgetc(dptr))
+    for (int c = fgetc(dptr); endWord == 0 && c != EOF; c = fgetc(dptr))
     {
         // allow only alphabetical characters and apostrophes
         if (isalpha(c) || (c == '\'' && index > 0))
         {
             // append character to word
-            new_node->entry[index] = tolower(c);
+            word[index] = c;
             index++;
 
             // ignore alphabetical strings too long to be words
@@ -219,7 +220,6 @@ bool load(const char* dictionary)
 
                 // prepare for new word
                 index = 0;
-                
             }
         }
 
@@ -231,32 +231,22 @@ bool load(const char* dictionary)
 
             // prepare for new word
             index = 0;
-           
         }
 
         // we must have found a whole word
         else if (index > 0)
         {
             // terminate current word
-             new_node->entry[index] = '\0';
+            word[index] = '\0';
 
             // update counter
             wordsEntered++;
 
             // prepare for next word
             index = 0;
-            break;
-          }
-         else if (new_node->entry[index]== EOF)
-		{
-			free(new_node->entry);
-			fclose(dptr);
-			return true;
-		}
-	}
-		new_node->next = NULL;
-         
-        
+            endWord = 1;
+        }
+    }
 		/*int j = strlen(temp);
 		for (int i = 0; i < j; i++)
 		{
@@ -266,40 +256,40 @@ bool load(const char* dictionary)
 			}
 		}*/
 		
+		new_node->entry = word;
+		new_node->next = NULL;
 		
 		//printf("%s = ", temp);						// for debugging
-    	
+    
 		hashResult = hash (new_node->entry);
 		//hash(temp);
 		//printf("%s hashes to %i\n", temp, hashResult);
-		//printf("%s = %i\n", new_node->entry, hashResult);
-		
-		if (hashTable->first[hashResult] == NULL)
+		printf("%s = %i\n", new_node->entry, hashResult);
+		node *head = hashTable->table[hashResult];
+		if (head == NULL)
 		{
-			new_node->next =  hashTable->first[hashResult];
-			hashTable->first[hashResult] = new_node;
+			new_node->next = head;
+			hashTable->table[hashResult] = new_node;
 			//printf("%d\n", hashResult);
 			insertCount++;
 			//printf("Successful entry!\n");
 		}
-	//	printf("%s\n",hashTable->first[hashResult].entry);
-	else if (hashTable->first[hashResult] != NULL) 
+	//	printf("%s\n",hashTable->table[hashResult].entry);
+	else if (head != NULL) 
 		{
-				new_node->next =  hashTable->first[hashResult];
-				hashTable->first[hashResult] = new_node;
+				new_node->next = head;
+				hashTable->table[hashResult] = new_node;
 				//printf("%d\n", hashResult);
 				insertCount++;
 				collisionCount++;
 				//printf("Successful entry!\n");
 		}
-       }
-	
-	
-      
-      
-    // fclose dictionary file
+	}
+    
+   // fclose dictionary file
     fclose(dptr);
     printf("dptr was closed successfully\n");							// for debugging
+      
     // set bool to true
     return true;
 }
@@ -309,7 +299,6 @@ bool load(const char* dictionary)
  *********************************************************/
 unsigned int size(void)
 {
-	//printf("Checking size...");
     return wordCount;
 }
 
@@ -318,9 +307,23 @@ unsigned int size(void)
  *******************************************************/
 bool unload(void)
 {
-    //node *previousNode;
-    //node *currentNode;
-  
+	if (hashTable == NULL)  return false;
+	
+    node *previousNode;
+    node *currentNode;
+    
+    for(int i = 0; i < hashTable->size; i++)
+    {
+    	currentNode = hashTable->table[i];
+    	while (currentNode != NULL)
+    	{
+    		previousNode = currentNode;
+    		currentNode = currentNode->next;
+    		//free(previousNode->entry);	//  causes program to crash 'Error in ./speller:  free(): invalid pointer: 0xbfa24fea'
+    		free(previousNode);
+    	}
+    }
+    free(hashTable->table);
     free(hashTable);
     
     printf("Words counted: %i\n", wordCount);
