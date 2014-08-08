@@ -70,7 +70,7 @@ unsigned int hash(const char* word)
 {
 
     unsigned int hashValue = SEED;
-    //hashValue = 0;
+
     for(; *word != '\0'; word++) 
     {
     	hashValue = *word + (hashValue << 5)  - hashValue;
@@ -78,41 +78,12 @@ unsigned int hash(const char* word)
 
 	hashResult = hashValue % wordCount;
 
-	//performed best so far with 52,590 collisions
-	//unsigned long hashValue = 0;
-	//int c; 
-	//while ((c = *word++)) hashValue = c + (hashValue << 6) + (hashValue << 16) - hashValue;
-	
-	// 52,707 collisions
-	//unsigned long hash = 5381;
-	//int c; 
-	//while ((c = *word++)) hash = ((hash << 5) + hash) + c;  
-	//hashResult = (hash % wordCount);
-	
-	//int len = strlen(word);
-    //hashResult = SuperFastHash(word, len) % wordCount;
-/*
-	// Peter Weinberger
-	// performed worse than original hash with 52,816 collisions vs. 52,710
-	const char *p;
-	unsigned int h, g;
-	h = 0;
-	for(p= word; *p!='\0'; p++){
-		h = (h<<4) + *p;
-		if ((g = h&0xF0000000)) {
-			h ^= g>>24;
-			h ^= g;
-		}
-	}
-*/
-
     return hashResult; 
 }
 
 bool check(const char* word)
 {
 	unsigned int len = strlen(word);
-	//printf("word = %s\n", word);	
 	
 	char dest[len];
 	
@@ -124,22 +95,12 @@ bool check(const char* word)
 	hashResult = hash(dest);
 	if(hashResult > wordCount ) return false;
 	node *currentNode = hashTable->first[hashResult];
-	//printf("%s is the currentNode->entry @ %i: \n", currentNode->entry, hashResult);
+
     while (currentNode != NULL)
     {
     	// strcmp entry and word
     	if(strcmp(dest, currentNode->entry) == 0) return true;
     	else currentNode = currentNode->next;
-    /*	//printf("strcmp result = %i\n", comp);
-    	if (comp == 0)  
-    	{
-    		return true;
-    	}
-    	if(comp == 1 || comp == -1)
-    	{
-    		currentNode = currentNode->next;
-    	}
-    */	
     } 
     return false;
 }
@@ -155,7 +116,6 @@ bool load(const char* dictionary)
     // ensure it worked
     if (dptr == NULL)
     {
-    	printf("dptr was NULL\n");							// for debugging
     	return false;
     }
     
@@ -168,7 +128,6 @@ bool load(const char* dictionary)
     { 	
 		for (chars_read =0;  chars_read < LENGTH + 1; chars_read++)
 		{
-			//memset(buffer, '\0', sizeof(buffer));
 			// read card to buffer, one byte at a time
 			fread(&buffer[chars_read], sizeof(char), 1, dptr);
 			 
@@ -187,41 +146,26 @@ bool load(const char* dictionary)
     		}
     	}
     }
-    //printf("wordCount is %d\n", wordCount);					// for debugging
     
     // reset file position indicator to beginning of dptr
     fseek(dptr, 0, SEEK_SET);
-   // printf("Reset file position indicator to start of file, and reset EOF flag.\n");
     
     // index dictionary and store in memory
-    //char *dict[wordCount];
-    //printf("Initialized dictionary array.\n");
     int wordsEntered = 0;
   
     //initialize hashtable
     hashTable = createHashTable(wordCount);
-//    printf("Creating hashtable...\n")
 
    // load words from dictionary into hashTable
    for (int i = 0; i < wordCount; i++)
     {
-    	 // malloc new node* n for each word
-    	// printf("Attempting to allocate memory for new node...");
     	node *new_node = malloc(sizeof(node));
     	if (new_node == NULL)
     	{
     	  	printf("new_node was NULL\n");							// for debugging
     		return false;
     	}
-    //	printf("done.\n");
-  
-    	//char  temp[LENGTH + 1];
-    	//char* fmt = "%[^\n]%*c";
-    	//memset(temp, '\0', sizeof(temp));
-    	//fgets(temp, sizeof(temp), dptr);
-    	//fscanf(dptr,  fmt, temp);
- 		//printf("fgets next word from dptr... \n");
-		//char word[LENGTH + 1];
+
 		unsigned int index = 0;
 
     	// spell-check each word in text
@@ -254,7 +198,6 @@ bool load(const char* dictionary)
 
             // prepare for new word
             index = 0;
-           
         }
 
         // we must have found a whole word
@@ -278,52 +221,28 @@ bool load(const char* dictionary)
 		}
 	}
 		new_node->next = NULL;
-         
-        
-		/*int j = strlen(temp);
-		for (int i = 0; i < j; i++)
-		{
-			if (temp[i] == '\n')
-			{
-				temp[i]  = '\0';
-			}
-		}*/
-		
-		
-		//printf("%s = ", temp);						// for debugging
-    	
+
 		hashResult = hash (new_node->entry);
-		//hash(temp);
-		//printf("%s hashes to %i\n", temp, hashResult);
-		//printf("%s = %i\n", new_node->entry, hashResult);
-		
+
 		if (hashTable->first[hashResult] == NULL)
 		{
 			hashTable->first[hashResult]= new_node;
 			new_node->next = NULL;
-			//printf("%d\n", hashResult);
 			insertCount++;
-			//printf("Successful entry!\n");
 		}
-	//	printf("%s\n",hashTable->first[hashResult].entry);
+	
 	else if (hashTable->first[hashResult] != NULL) 
 		{
 				new_node->next = hashTable->first[hashResult];
 				hashTable->first[hashResult] = new_node;
-		
-				//printf("%d\n", hashResult);
 				insertCount++;
 				collisionCount++;
-				//printf("Successful entry!\n");
 		}
-       }
-	
-	
-      
-      
+	}
+
     // fclose dictionary file
     fclose(dptr);
-    printf("dptr was closed successfully\n");							// for debugging
+
     // set bool to true
     return true;
 }
@@ -333,7 +252,6 @@ bool load(const char* dictionary)
  *********************************************************/
 unsigned int size(void)
 {
-	//printf("Checking size...");
     return wordCount;
 }
 
@@ -345,7 +263,7 @@ bool unload(void)
     for (int i = 0; i < wordCount; i++)
     {
     	node *currentNode = hashTable->first[i];
-	//printf("%s is the currentNode->entry @ %i: \n", currentNode->entry, hashResult);
+
 			while (currentNode != NULL)
 			{
 					node *previousNode = currentNode;
