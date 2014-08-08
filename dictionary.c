@@ -329,6 +329,7 @@ bool unload(void)
 					free(previousNode);
 			}
 	}
+	free(hashTable->first);
     free(hashTable);
     
     printf("Words counted: %i\n", wordCount);
