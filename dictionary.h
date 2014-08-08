@@ -25,6 +25,7 @@
 // default dictionary
 #define DICTIONARY "home/cs50/pset6/dictionaries/large"
 
+uint32_t SuperFastHash (const char * data, int len);
 
 unsigned int hash(const char* word);
 /**

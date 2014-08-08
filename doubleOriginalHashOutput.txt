@@ -1,0 +1,260 @@
+jharvard@appliance (~/Dropbox/pset6): make speller
+clang -ggdb3 -O0 -Qunused-arguments -std=c99 -Wall -Werror   -c -o dictionary.o dictionary.c
+clang -ggdb3 -O0 -Qunused-arguments -std=c99 -Wall -Werror -o speller speller.o dictionary.o 
+jharvard@appliance (~/Dropbox/pset6): ./speller tom.txt
+wordCount is 143091
+dptr was closed successfully
+
+MISSPELLED WORDS
+
+Words counted: 143091
+Words inserted: 143091
+Hash collisions: 30621
+
+WORDS MISSPELLED:     19632
+WORDS IN DICTIONARY:  143091
+WORDS IN TEXT:        74451
+TIME IN load:         0.119000
+TIME IN check:        0.027000
+TIME IN size:         0.000000
+TIME IN unload:       0.011000
+TIME IN TOTAL:        0.157000
+
+jharvard@appliance (~/Dropbox/pset6): ./speller tom.txt
+wordCount is 143091
+dptr was closed successfully
+
+MISSPELLED WORDS
+
+Words counted: 143091
+Words inserted: 143091
+Hash collisions: 30621
+
+WORDS MISSPELLED:     19632
+WORDS IN DICTIONARY:  143091
+WORDS IN TEXT:        74451
+TIME IN load:         0.121000
+TIME IN check:        0.028000
+TIME IN size:         0.000000
+TIME IN unload:       0.010000
+TIME IN TOTAL:        0.159000
+
+jharvard@appliance (~/Dropbox/pset6): ./speller tom.txt
+wordCount is 143091
+dptr was closed successfully
+
+MISSPELLED WORDS
+
+Words counted: 143091
+Words inserted: 143091
+Hash collisions: 30621
+
+WORDS MISSPELLED:     19632
+WORDS IN DICTIONARY:  143091
+WORDS IN TEXT:        74451
+TIME IN load:         0.120000
+TIME IN check:        0.033000
+TIME IN size:         0.000000
+TIME IN unload:       0.010000
+TIME IN TOTAL:        0.163000
+
+jharvard@appliance (~/Dropbox/pset6): ./speller tom.txt
+wordCount is 143091
+dptr was closed successfully
+
+MISSPELLED WORDS
+
+Words counted: 143091
+Words inserted: 143091
+Hash collisions: 30621
+
+WORDS MISSPELLED:     19632
+WORDS IN DICTIONARY:  143091
+WORDS IN TEXT:        74451
+TIME IN load:         0.121000
+TIME IN check:        0.026000
+TIME IN size:         0.000000
+TIME IN unload:       0.010000
+TIME IN TOTAL:        0.157000
+
+jharvard@appliance (~/Dropbox/pset6): ./speller tom.txt
+wordCount is 143091
+dptr was closed successfully
+
+MISSPELLED WORDS
+
+Words counted: 143091
+Words inserted: 143091
+Hash collisions: 30621
+
+WORDS MISSPELLED:     19632
+WORDS IN DICTIONARY:  143091
+WORDS IN TEXT:        74451
+TIME IN load:         0.117000
+TIME IN check:        0.030000
+TIME IN size:         0.000000
+TIME IN unload:       0.010000
+TIME IN TOTAL:        0.157000
+
+jharvard@appliance (~/Dropbox/pset6): ./speller tom.txt
+wordCount is 143091
+dptr was closed successfully
+
+MISSPELLED WORDS
+
+Words counted: 143091
+Words inserted: 143091
+Hash collisions: 30621
+
+WORDS MISSPELLED:     19632
+WORDS IN DICTIONARY:  143091
+WORDS IN TEXT:        74451
+TIME IN load:         0.120000
+TIME IN check:        0.032000
+TIME IN size:         0.000000
+TIME IN unload:       0.011000
+TIME IN TOTAL:        0.163000
+
+jharvard@appliance (~/Dropbox/pset6): ./speller tom.txt
+wordCount is 143091
+dptr was closed successfully
+
+MISSPELLED WORDS
+
+Words counted: 143091
+Words inserted: 143091
+Hash collisions: 30621
+
+WORDS MISSPELLED:     19632
+WORDS IN DICTIONARY:  143091
+WORDS IN TEXT:        74451
+TIME IN load:         0.120000
+TIME IN check:        0.033000
+TIME IN size:         0.000000
+TIME IN unload:       0.010000
+TIME IN TOTAL:        0.163000
+
+jharvard@appliance (~/Dropbox/pset6): ./speller tom.txt
+wordCount is 143091
+dptr was closed successfully
+
+MISSPELLED WORDS
+
+Words counted: 143091
+Words inserted: 143091
+Hash collisions: 30621
+
+WORDS MISSPELLED:     19632
+WORDS IN DICTIONARY:  143091
+WORDS IN TEXT:        74451
+TIME IN load:         0.119000
+TIME IN check:        0.019000
+TIME IN size:         0.000000
+TIME IN unload:       0.011000
+TIME IN TOTAL:        0.149000
+
+jharvard@appliance (~/Dropbox/pset6): ./speller tom.txt
+wordCount is 143091
+dptr was closed successfully
+
+MISSPELLED WORDS
+
+Words counted: 143091
+Words inserted: 143091
+Hash collisions: 30621
+
+WORDS MISSPELLED:     19632
+WORDS IN DICTIONARY:  143091
+WORDS IN TEXT:        74451
+TIME IN load:         0.121000
+TIME IN check:        0.030000
+TIME IN size:         0.000000
+TIME IN unload:       0.011000
+TIME IN TOTAL:        0.162000
+
+jharvard@appliance (~/Dropbox/pset6): ./speller tom.txt
+wordCount is 143091
+dptr was closed successfully
+
+MISSPELLED WORDS
+
+Words counted: 143091
+Words inserted: 143091
+Hash collisions: 30621
+
+WORDS MISSPELLED:     19632
+WORDS IN DICTIONARY:  143091
+WORDS IN TEXT:        74451
+TIME IN load:         0.178000
+TIME IN check:        0.033000
+TIME IN size:         0.000000
+TIME IN unload:       0.010000
+TIME IN TOTAL:        0.221000
+
+jharvard@appliance (~/Dropbox/pset6): ./speller tom.txt
+wordCount is 143091
+dptr was closed successfully
+
+MISSPELLED WORDS
+
+Words counted: 143091
+Words inserted: 143091
+Hash collisions: 30621
+
+WORDS MISSPELLED:     19632
+WORDS IN DICTIONARY:  143091
+WORDS IN TEXT:        74451
+TIME IN load:         0.119000
+TIME IN check:        0.034000
+TIME IN size:         0.000000
+TIME IN unload:       0.010000
+TIME IN TOTAL:        0.163000
+
+jharvard@appliance (~/Dropbox/pset6): ./speller tom.txt
+wordCount is 143091
+dptr was closed successfully
+
+MISSPELLED WORDS
+
+Words counted: 143091
+Words inserted: 143091
+Hash collisions: 30621
+
+WORDS MISSPELLED:     19632
+WORDS IN DICTIONARY:  143091
+WORDS IN TEXT:        74451
+TIME IN load:         0.119000
+TIME IN check:        0.038000
+TIME IN size:         0.000000
+TIME IN unload:       0.011000
+TIME IN TOTAL:        0.168000
+
+jharvard@appliance (~/Dropbox/pset6): ./speller tom.txt
+wordCount is 143091
+dptr was closed successfully
+
+MISSPELLED WORDS
+
+Words counted: 143091
+Words inserted: 143091
+Hash collisions: 30621
+
+WORDS MISSPELLED:     19632
+WORDS IN DICTIONARY:  143091
+WORDS IN TEXT:        74451
+TIME IN load:         0.118000
+TIME IN check:        0.035000
+TIME IN size:         0.000000
+TIME IN unload:       0.010000
+TIME IN TOTAL:        0.163000
+
+jharvard@appliance (~/Dropbox/pset6): git add .
+jharvard@appliance (~/Dropbox/pset6): git commit -am "Double size of hash table"
+[master 9c660ac] Double size of hash table
+ 7 files changed, 1183 insertions(+), 3 deletions(-)
+ rewrite core (96%)
+ create mode 100644 doubleOriginalHash-dictionary.c
+ create mode 100644 firstPassing-dictionary.c
+ create mode 100644 secondResultsOutput.txt
+jharvard@appliance (~/Dropbox/pset6): 
+
