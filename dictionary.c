@@ -17,18 +17,7 @@
 
 // default dictionary
 #define DICTIONARY "home/cs50/pset6/dictionaries/large"
-
-#undef get16bits
-#if (defined(__GNUC__) && defined(__i386__)) || defined(__WATCOMC__) \
-  || defined(_MSC_VER) || defined (__BORLANDC__) || defined (__TURBOC__)
-#define get16bits(d) (*((const uint16_t *) (d)))
-#endif
-
-#if !defined (get16bits)
-#define get16bits(d) ((((uint32_t)(((const uint8_t *)(d))[1])) << 8)\
-                       +(uint32_t)(((const uint8_t *)(d))[0]) )
-#endif
-
+#define SEED 5381
 
 // create data structures
     typedef struct node
@@ -39,66 +28,20 @@
  
  	typedef struct hashtable
  	{
- 		int size;
+ 		unsigned int size;
  		node **first;
  	}hashtable;
  
 FILE* dptr = NULL;
 
 unsigned int wordCount = 0;
-int insertCount;
-int hashCheck;
-int hashResult;
-int collisionCount = 0;
+unsigned int insertCount;
+unsigned int hashCheck;
+unsigned int hashResult;
+unsigned int collisionCount = 0;
 hashtable *hashTable;
 
-uint32_t SuperFastHash (const char * data, int len) 
-{
-	uint32_t hash = len, tmp;
-	int rem;
-
-		if (len <= 0 || data == NULL) return 0;
-
-		rem = len & 3;
-		len >>= 2;
-
-		/* Main loop */
-		for (;len > 0; len--) {
-		    hash  += get16bits (data);
-		    tmp    = (get16bits (data+2) << 11) ^ hash;
-		    hash   = (hash << 16) ^ tmp;
-		    data  += 2*sizeof (uint16_t);
-		    hash  += hash >> 11;
-		}
-
-		/* Handle end cases */
-		switch (rem) {
-		    case 3: hash += get16bits (data);
-		            hash ^= hash << 16;
-		            hash ^= ((signed char)data[sizeof (uint16_t)]) << 18;
-		            hash += hash >> 11;
-		            break;
-		    case 2: hash += get16bits (data);
-		            hash ^= hash << 11;
-		            hash += hash >> 17;
-		            break;
-		    case 1: hash += (signed char)*data;
-		            hash ^= hash << 10;
-		            hash += hash >> 1;
-		}
-
-		/* Force "avalanching" of final 127 bits */
-		hash ^= hash << 3;
-		hash += hash >> 5;
-		hash ^= hash << 4;
-		hash += hash >> 17;
-		hash ^= hash << 25;
-		hash += hash >> 6;
-
-		return hash;
-}
-
-hashtable *createHashTable(int size)
+hashtable *createHashTable(unsigned int size)
 {
     hashtable *new_table;
     
@@ -125,33 +68,69 @@ hashtable *createHashTable(int size)
 
 unsigned int hash(const char* word)
 {
-/*
-    unsigned int hashValue;
-    hashValue = 0;
+
+    unsigned int hashValue = SEED;
+    //hashValue = 0;
     for(; *word != '\0'; word++) 
     {
-    	hashValue = *word + (hashValue << 5) - hashValue;
-    }
+    	hashValue = *word + (hashValue << 5)  - hashValue;
+    } 
 
 	hashResult = hashValue % wordCount;
-	*/
-	int len = strlen(word);
-    hashResult = SuperFastHash(word, len) % wordCount;
+
+	//performed best so far with 52,590 collisions
+	//unsigned long hashValue = 0;
+	//int c; 
+	//while ((c = *word++)) hashValue = c + (hashValue << 6) + (hashValue << 16) - hashValue;
+	
+	// 52,707 collisions
+	//unsigned long hash = 5381;
+	//int c; 
+	//while ((c = *word++)) hash = ((hash << 5) + hash) + c;  
+	//hashResult = (hash % wordCount);
+	
+	//int len = strlen(word);
+    //hashResult = SuperFastHash(word, len) % wordCount;
+/*
+	// Peter Weinberger
+	// performed worse than original hash with 52,816 collisions vs. 52,710
+	const char *p;
+	unsigned int h, g;
+	h = 0;
+	for(p= word; *p!='\0'; p++){
+		h = (h<<4) + *p;
+		if ((g = h&0xF0000000)) {
+			h ^= g>>24;
+			h ^= g;
+		}
+	}
+*/
+
     return hashResult; 
 }
 
 bool check(const char* word)
 {
+	unsigned int len = strlen(word);
 	//printf("word = %s\n", word);	
-	hashResult = hash(word);
-	if(hashResult < 0 || hashResult > wordCount ){return false;}
+	
+	char dest[len];
+	
+	strcpy(dest, word);
+	for (int i = 0; i < len; i++)
+	{
+		dest[i] = tolower(dest[i]);
+	}
+	hashResult = hash(dest);
+	if(hashResult > wordCount ) return false;
 	node *currentNode = hashTable->first[hashResult];
 	//printf("%s is the currentNode->entry @ %i: \n", currentNode->entry, hashResult);
-    for (int loopEscape = 0; currentNode != NULL; loopEscape++)
+    while (currentNode != NULL)
     {
     	// strcmp entry and word
-    	int comp = strcmp(word, currentNode->entry);
-    	//printf("strcmp result = %i\n", comp);
+    	if(strcmp(dest, currentNode->entry) == 0) return true;
+    	else currentNode = currentNode->next;
+    /*	//printf("strcmp result = %i\n", comp);
     	if (comp == 0)  
     	{
     		return true;
@@ -160,12 +139,7 @@ bool check(const char* word)
     	{
     		currentNode = currentNode->next;
     	}
-    	if (loopEscape > 10)
-    	{
-    		printf("Had to use loopEscape with %s\n", currentNode->entry);
-    		return false;
-    	}
-    	else return false;
+    */	
     } 
     return false;
 }
@@ -194,6 +168,7 @@ bool load(const char* dictionary)
     { 	
 		for (chars_read =0;  chars_read < LENGTH + 1; chars_read++)
 		{
+			//memset(buffer, '\0', sizeof(buffer));
 			// read card to buffer, one byte at a time
 			fread(&buffer[chars_read], sizeof(char), 1, dptr);
 			 
@@ -212,7 +187,7 @@ bool load(const char* dictionary)
     		}
     	}
     }
-    printf("wordCount is %d\n", wordCount);					// for debugging
+    //printf("wordCount is %d\n", wordCount);					// for debugging
     
     // reset file position indicator to beginning of dptr
     fseek(dptr, 0, SEEK_SET);
@@ -222,7 +197,7 @@ bool load(const char* dictionary)
     //char *dict[wordCount];
     //printf("Initialized dictionary array.\n");
     int wordsEntered = 0;
-   
+  
     //initialize hashtable
     hashTable = createHashTable(wordCount);
 //    printf("Creating hashtable...\n")
@@ -247,7 +222,7 @@ bool load(const char* dictionary)
     	//fscanf(dptr,  fmt, temp);
  		//printf("fgets next word from dptr... \n");
 		//char word[LENGTH + 1];
-		int index = 0;
+		unsigned int index = 0;
 
     	// spell-check each word in text
     for (int c = fgetc(dptr); c != EOF; c = fgetc(dptr))
@@ -324,8 +299,8 @@ bool load(const char* dictionary)
 		
 		if (hashTable->first[hashResult] == NULL)
 		{
-			new_node->next =  hashTable->first[hashResult];
-			hashTable->first[hashResult] = new_node;
+			hashTable->first[hashResult]= new_node;
+			new_node->next = NULL;
 			//printf("%d\n", hashResult);
 			insertCount++;
 			//printf("Successful entry!\n");
@@ -333,8 +308,9 @@ bool load(const char* dictionary)
 	//	printf("%s\n",hashTable->first[hashResult].entry);
 	else if (hashTable->first[hashResult] != NULL) 
 		{
-				new_node->next =  hashTable->first[hashResult];
+				new_node->next = hashTable->first[hashResult];
 				hashTable->first[hashResult] = new_node;
+		
 				//printf("%d\n", hashResult);
 				insertCount++;
 				collisionCount++;
@@ -380,9 +356,9 @@ bool unload(void)
 	free(hashTable->first);
     free(hashTable);
     
-    printf("Words counted: %i\n", wordCount);
-    printf("Words inserted: %i\n", insertCount);
-    printf("Hash collisions: %i\n", collisionCount);
+   printf("Words counted: %i\n", wordCount);
+   printf("Words inserted: %i\n", insertCount);
+   printf("Hash collisions: %i\n", collisionCount);
     
   	return true;  
 }
