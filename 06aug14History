@@ -1,0 +1,1000 @@
+  607  cd Desktop
+  608  ls
+  609  cd Dropbox
+  610  cd ..
+  611  ls
+  612  cd Dropbox
+  613  ls
+  614  cd pset5
+  615  ls
+  616  halt
+  617  sudo su
+  618  ipconfig
+  619  iwconfig
+  620  lsbus
+  621  lsusb
+  622  modprobe
+  623  modprobe -h
+  624  modprobe -R
+  625  uname -r
+  626  blkusb
+  627  lsblk
+  628  lsusb
+  629  cd Dropbox
+  630  cd pset5
+  631  cd bmp
+  632  ls
+  633  make resize
+  634  ls
+  635  ./resize 4 smiley.bmp bigsmiley.bmp
+  636  ./resize 4 large.bmp biglarge.bmp
+  637  make resize
+  638  ./resize 4 large.bmp biglarge.bmp
+  639  make resize
+  640  ./resize 4 large.bmp biglarge.bmp
+  641  make resize
+  642  ./resize 4 large.bmp biglarge.bmp
+  643  make resize
+  644  ./resize 4 large.bmp biglarge.bmp
+  645  make resize
+  646  ./resize 4 large.bmp biglarge.bmp
+  647  make resize
+  648  ./resize 4 large.bmp biglarge.bmp
+  649  make resize
+  650  ./resize 4 large.bmp biglarge.bmp
+  651  make resize
+  652  ./resize 4 large.bmp biglarge.bmp
+  653  make resize
+  654  ./resize 4 large.bmp biglarge.bmp
+  655  ls
+  656  git init
+  657  git add resize.c
+  658  git commit -m "Initial commit"
+  659  git add resize.c
+  660  git commit -m "Add note to validate argv[1]"
+  661  git add resize.c
+  662  git commit -m "Add explanation to the line =  RGBTRIPLE triple;"
+  663  git add resize.c
+  664  git commit -m "Validate argv[1] is an int of value 1-100"
+  665  git add resize.c
+  666  git commit -m "Insert notes pertaining to thoughts on which header file values to reassign"
+  667  git add resize.c
+  668  git commit -m "Add note that explains that the Walkthrough Videos answer any and all previous questions"
+  669  git add resize.c
+  670  git commit -m "Change header info; clean up old comments"
+  671  git add resize.c
+  672  git commit -m "Change variable names from bi* to bi.bi*"
+  673  git add resize.c
+  674  git commit -m "Assign value of padding to oldPadding, and update with new value"
+  675  make resize
+  676  ./resize 4 large.bmp 4large.bmp
+  677  ./resize 10 smiley.bmp bigsmile.bmp
+  678  make resize
+  679  ./resize 10 smiley.bmp bigsmile.bmp
+  680  make resize
+  681  ./resize 10 smiley.bmp bigsmile.bmp
+  682  make resize
+  683  ./resize 10 smiley.bmp bigsmile.bmp
+  684  make resize
+  685  ./resize 10 smiley.bmp bigsmile.bmp
+  686  make resize
+  687  ./resize 10 smiley.bmp bigsmile.bmp
+  688  ./resize 40 smiley.bmp bigsmile.bmp
+  689  ./resize 10 smiley.bmp bigsmile.bmp
+  690  make resize
+  691  ./resize 40 smiley.bmp bigsmile.bmp
+  692  git add resize.c
+  693  git commit -m "Make sure loops are in correct order"
+  694  make resize
+  695  ./resize 40 smiley.bmp bigsmile.bmp
+  696  make resize
+  697  ./resize 40 smiley.bmp bigsmile.bmp
+  698  git add resize.c
+  699  git commit -m "Add fpos_t, fgetpos, and fsetpos, after learning how to use them"
+  700  git add resize.c
+  701  git commit -m "Clean up comments and spacing"
+  702  make resize
+  703  ./resize 5 verdict.bmp bigverdict.bmp
+  704  ./resize 1 verdict.bmp 1verdict.bmp
+  705  diff verdict.bmp 1verdict.bmp
+  706  cd Dropbox
+  707  cd pset5
+  708  cd bmp
+  709  check50 2014/x/pset5/resize bmp.h resize.c
+  710  gedit resize.c
+  711  make resize
+  712  nano resize.c
+  713  make resize
+  714  check50 2014/x/pset5/resize bmp.h resize.c
+  715  nano resize.c
+  716  git add resize.c
+  717  git commit -m "Does not pass check50. Add oldPadding variable back in when skipping over padding, and padding variable in when adding padding back at end of row."
+  718  make resize
+  719  check50 2014/x/pset5/resize bmp.h resize.c
+  720  ls
+  721  ./resize 2 small.bmp doublesmall.bmp 
+  722  xxd -c 36 -g 3 -s 54 small.bmp
+  723  xxd -c 36 -g 3 -s 54 doublesmall.bmp
+  724  nano resize.c
+  725  gedit resize.c
+  726  make resize
+  727  ./resize 2 small.bmp doublesmall.bmp 
+  728  xxd -c 36 -g 3 -s 54 doublesmall.bmp
+  729  check50 2014/x/pset5/resize bmp.h resize.c
+  730  make resize
+  731  ./resize 2 small.bmp doublesmall.bmp 
+  732  xxd -c 36 -g 3 -s 54 doublesmall.bmp
+  733  make resize
+  734  ./resize 2 small.bmp doublesmall.bmp 
+  735  xxd -c 36 -g 3 -s 54 doublesmall.bmp
+  736  make resize
+  737  ./resize 2 small.bmp doublesmall.bmp 
+  738  xxd -c 36 -g 3 -s 54 doublesmall.bmp
+  739  make resize
+  740  ./resize 2 small.bmp doublesmall.bmp 
+  741  xxd -c 36 -g 3 -s 54 doublesmall.bmp
+  742  check50 2014/x/pset5/resize bmp.h resize.c
+  743  make resize
+  744  ./resize 2 small.bmp doublesmall.bmp 
+  745  xxd -c 36 -g 3 -s 54 doublesmall.bmp
+  746  check50 2014/x/pset5/resize bmp.h resize.c
+  747    cd ..
+  748  ls
+  749  cd jpg
+  750  ls
+  751  nano recover.c
+  752  git init
+  753  git add recover.c
+  754  git commit -m "Initial commit"
+  755  nano recover.c
+  756  git add recovery.c
+  757  git commit -m "Open memory card file"
+  758  git add recover.c
+  759  git commit -m "Open memory card file"
+  760  cd ~
+  761  nano .bashrc
+  762  cd Dropbox/pset5/jpg
+  763  ls
+  764  gedit recover.c
+  765  git add recover.c
+  766  git commit -m "Add header, define BLOCK, and typedef BYTE"
+  767  git add recover.c
+  768  git commit -m "Check that infile is not NULL"
+  769  git add recover.c
+  770  git commit -m "Add buffer"
+  771  git add recover.c
+  772  git commit -m "Read card to buffer, one block at a time"
+  773  git add recover.c
+  774  git commit -m "Change BLOCK from constant to typedef, and add blocks_read"
+  775  git add recover.c
+  776  git commit -m "Add loop to find start of JPEG"
+  777  git add recover.c
+  778  git commit -m "Close memory card file, before we forget"
+  779  make recover
+  780  ./recover
+  781  make recover
+  782  ./recover
+  783  git add recover.c
+  784  git commit -m "Change buffer to array"
+  785   git add recover.c
+  786  git commit -m "Add pseudocode before stopping for the night"
+  787   git add recover.c
+  788  git commit -m "Set condition to continue writing jpeg to new file"
+  789  git add recover.c
+  790  git commit -m "Set condition for writing to new file"
+  791  git add recover.c
+  792  git commit -m "Verify that new file is not NULL before writing to it"
+  793  git add recover.c
+  794  git commit -m "Close the last file being written to, before we forget"
+  795  git add recover.c
+  796  git commit -m "Stop main loop when end of file is reached"
+  797  git add recover.c
+  798  git commit -m "Add condition for blocks not containing jpegs"
+  799  make recover
+  800  git add recover.c
+  801  git commit -m "Change title variable to new_file variable in several spots"
+  802  make recover
+  803  ./recover
+  804  make recover
+  805  ./recover
+  806  make recover
+  807  ./recover
+  808  make recover
+  809  ./recover
+  810  cd Dropbox/pset5/jpeg
+  811  cd Dropbox/pset5/jpg
+  812  ls
+  813  ls -a
+  814  cat core
+  815  make recover
+  816  gdb ./recover
+  817  make recover
+  818  ./recover
+  819  make recover
+  820  ./recover
+  821  ls -a
+  822  rm -f *.jpg
+  823  ls
+  824  make recover
+  825  ./recover
+  826  make recover
+  827  ./recover
+  828  make recover
+  829  ./recover
+  830  ls
+  831  rm -f *jpg
+  832  ls
+  833  rm -f core
+  834  make recover
+  835  ./recover
+  836  ls
+  837  rm -f *jpg
+  838  make recover
+  839  ./recover
+  840  ls
+  841  rm -f *jpg
+  842  make recover
+  843  ./recover
+  844  ls
+  845  make recover
+  846  ./recover
+  847  make recover
+  848  ./recover
+  849  ls
+  850  rm -f *jpg
+  851  ls
+  852  rm -f 0*
+  853  ls
+  854  make recover
+  855  ./recover
+  856  ls
+  857  rm -f *jpg
+  858  ls
+  859  make recover
+  860  ./recover
+  861  ls
+  862  rm -f *jpg
+  863  make recover
+  864  ./recover
+  865  make recover
+  866  ./recover
+  867  make recover
+  868  ./recover
+  869  ls
+  870  rm -f *jpg
+  871  make recover
+  872  ./recover
+  873  ls
+  874  rm -rf *jpg
+  875  ls
+  876  ls -a
+  877  make recover
+  878  ./recover
+  879  ls 
+  880  rm -rf *jpg
+  881  ls 
+  882  make recover
+  883  ./recover
+  884  ls
+  885  check50 2013.pset5.recover recover.c
+  886  make recover
+  887  ls
+  888  rm -f *jpg
+  889  ls
+  890  ./recover
+  891  ls
+  892  check50 2013.pset5.recover recover.c
+  893  make recover
+  894  check50 2013.pset5.recover recover.c
+  895   git add recover.c
+  896  git commit -m "Compiles and recovers 000.jpg-048.jpg correctly, but not 049.jpg"
+  897  git add recover.c
+  898  git commit -m "After reading 1st byte of block to buffer, check for eof"
+  899  make recover
+  900  ls
+  901  rm -f *jpg
+  902  ls
+  903  ./recover
+  904  make recover
+  905  ./recover
+  906  ls
+  907  git add recover.c
+  908  git commit -m "Change the checking for eof from while loop, to if condition"
+  909  check50 2013.pset5.recover recover.c
+  910  git add recover.c
+  911  git commit -m "Delete variables used for debugging, and clean up commenting"
+  912   ls
+  913  ifconfig eth2
+  914  cd ..
+  915  ls
+  916  rm -f *.zip
+  917  ls
+  918  cd pset5
+  919  ls
+  920  gedit questions.txt
+  921  ls
+  922  cd bmp
+  923  ls
+  924  cd ..
+  925  cd jpg
+  926  ls
+  927  rm -f *jpg
+  928  make recover
+  929  ./recover
+  930  ls
+  931  cd ..
+  932  ls
+  933  cd Dropbox
+  934  ls
+  935  wget http://cdn.cs50.net/2013/fall/psets/6/pset6/pset6.zip
+  936  ls
+  937  unzip pset6.zip
+  938  ls
+  939  rm -f pset6.zip
+  940  ls
+  941  cd pset6
+  942  ls
+  943  gedit dictionary.h
+  944  gedit dictionary.c
+  945  gedit Makefile
+  946  gedit speller.c
+  947  gedit questions.txt
+  948  ls ~cs50/pset6/texts
+  949  cd ..
+  950  ls
+  951  mkdir texts
+  952  cp ~cs50/pset6/texts ~/Dropbox/texts
+  953  ls
+  954  cd texts
+  955  ls
+  956  cd ..
+  957  ls
+  958  cd Dropbox
+  959  ls
+  960  cd pset6
+  961  cp ~cs50/pset6/texts ~/Dropbox/texts
+  962  ls ~cs50/pset6/texts
+  963  gedit ~cs50/pset6/texts/alice.txt
+  964  gedit ~cs50/pset6/texts/austen.txt
+  965  gedit ~cs50/pset6/texts/austinpowers.txt
+  966  gedit ~cs50/pset6/texts/christmas.txt
+  967  gedit ~cs50/pset6/texts/constitution.txt
+  968  gedit ~cs50/pset6/texts/federalist.txt
+  969  gedit ~cs50/pset6/texts/frankenstein.txt
+  970  gedit ~cs50/pset6/texts/grimm.txt
+  971  gedit ~cs50/pset6/texts/holmes.txt
+  972  gedit ~cs50/pset6/texts/huck.txt
+  973  gedit ~cs50/pset6/texts/tolstoy.txt
+  974  gedit ~cs50/pset6/texts/iliad.txt
+  975  gedit ~cs50/pset6/texts/kjv.txt
+  976  gedit ~cs50/pset6/texts/sherlock.txt
+  977  gedit ~cs50/pset6/texts/tom.txt
+  978  gedit ~cs50/pset6/texts/surgery.txt
+  979  gedit ~cs50/pset6/texts/shakespeare.txt
+  980  gedit ~cs50/pset6/texts/witch.txt
+  981  gedit ~cs50/pset6/texts/wonderland.txt
+  982  gedit ~cs50/pset6/texts/pneumonoultramicroscopicsilicovolcanoconiosis.txt
+  983  gedit ~cs50/pset6/texts/package.txt
+  984  gedit ~cs50/pset6/texts/xueqin2.txt
+  985  gedit ~cs50/pset6/texts/usa.txt
+  986  gedit questions
+  987  gedit questions.txt
+  988  gedit dictionary.c
+  989  ls
+  990  gedit speller.c
+  991  man getrusage
+  992  man isalpha
+  993  cd Dropbox
+  994  ls
+  995  gedit dictionary.c
+  996  gedit dictionary.h
+  997  gedit Makefile
+  998  git init
+  999  git add .
+ 1000  git commit -m "Initial commit"
+ 1001  cd Dropbox/src7
+ 1002  ls
+ 1003  gedit linked.c
+ 1004  gedit linked_completed.c
+ 1005  git init
+ 1006  git add .
+ 1007  git commit -am "Initial commit"
+ 1008  git add .
+ 1009  git commit -am "Add pseudocode for insert_node"
+ 1010  git add .
+ 1011  git commit -am "Create a new node"
+ 1012  git add .
+ 1013  git commit -am "Create current and previous pointers"
+ 1014  git add .
+ 1015  git commit -am "Have insert_node() return node* list"
+ 1016  git add .
+ 1017  git commit -am "Add condition to insert before"
+ 1018  git add .
+ 1019  git commit -am "Add condition to insert after"
+ 1020  make linked
+ 1021  git add .
+ 1022  git commit -am "Change list to head"
+ 1023  git add .
+ 1024  git commit -am "Check for empty list, and add insertion at end of list"
+ 1025  make linked
+ 1026  git add .
+ 1027  git commit -am "For empty list, new_node->next = NULL"
+ 1028  cd ..
+ 1029  ls
+ 1030  cd pset6
+ 1031  ls
+ 1032  ls -a
+ 1033  git status
+ 1034  gedit speller.c
+ 1035  git add .
+ 1036  git commit -am "Add pseudocode for load(), and actual code for size()"
+ 1037  git add .
+ 1038  git commit -am "Open dictionary file and create data structures in load()"
+ 1039  git add .
+ 1040  git commit -am "Update header files"
+ 1041  git add .
+ 1042  git commit -am "Finish load()"
+ 1043  git add .
+ 1044  git commit -am "Add hash()"
+ 1045  git add .
+ 1046  git commit -am "Rename variables to distinguish ptr_nodes from new_nodes, and hashValues & hashResults from the index"
+ 1047  git add .
+ 1048  git commit -am "Add pseudocode for check()"
+ 1049  git add .
+ 1050  git commit -am "Add code for check()"
+ 1051  make speller
+ 1052  git add .
+ 1053  git commit -am "First time program compiled"
+ 1054  ./speller ~cs50/pset6/texts/austinpowers.txt
+ 1055  make speller
+ 1056  ./speller ~cs50/pset6/texts/austinpowers.txt
+ 1057  make speller
+ 1058  ./speller ~cs50/pset6/texts/austinpowers.txt
+ 1059  make speller
+ 1060  ./speller ~cs50/pset6/texts/austinpowers.txt
+ 1061  make speller
+ 1062  ./speller ~cs50/pset6/texts/austinpowers.txt
+ 1063  make speller
+ 1064  make dictionary
+ 1065  make speller
+ 1066  ./speller 
+ 1067  ls -a
+ 1068  cd ..
+ 1069  ls
+ 1070  cd texts
+ 1071  ls
+ 1072  cd ..
+ 1073  mv texts/tom.txt pset6/tom.txt
+ 1074  cd pset6
+ 1075  ls
+ 1076  ./speller ./tom.txt
+ 1077  cd ~
+ 1078  cd cs50
+ 1079  ls -a
+ 1080  cd /
+ 1081  ls -a
+ 1082  cd ~
+ 1083  cd Dropbox
+ 1084  cd pset6
+ 1085  ./speller ~cs50/pset6/dictionaries/small text
+ 1086  make speller
+ 1087  ./speller ~cs50/pset6/dictionaries/small tom.txt
+ 1088  make speller
+ 1089  ./speller ~cs50/pset6/dictionaries/small tom.txt
+ 1090  make speller
+ 1091  ./speller ~cs50/pset6/dictionaries/small tom.txt
+ 1092  make speller
+ 1093  ./speller ~cs50/pset6/dictionaries/small tom.txt
+ 1094  make speller
+ 1095  ./speller ~cs50/pset6/dictionaries/small tom.txt
+ 1096  ./speller ~cs50/pset6/dictionaries/small ./tom.txt
+ 1097  gdb ./speller ~cs50/pset6/dictionaries/small ./tom.txt
+ 1098  gdb ./speller ./tom.txt
+ 1099  gdb ./speller tom.txt
+ 1100  ls
+ 1101  gedit tom.txt
+ 1102  make speller
+ 1103  ./speller tom.txt
+ 1104  gdb ./speller tom.txt
+ 1105  ./speller ~cs50/pset6/texts/austinpowers.txt
+ 1106  gdb ./speller ~cs50/pset6/texts/austinpowers.txt
+ 1107  ./speller "tom.txt"
+ 1108  make speller
+ 1109  ./speller "tom.txt"
+ 1110  make speller
+ 1111  ./speller "tom.txt"
+ 1112  make speller
+ 1113  ./speller "tom.txt"
+ 1114  make speller
+ 1115  ./speller "tom.txt"
+ 1116  ./speller ./tom.txt
+ 1117  ./speller text
+ 1118  make speller
+ 1119   ./speller ~cs50/pset6/dictionaries/small "tom.txt"
+ 1120  make speller
+ 1121   ./speller ~cs50/pset6/dictionaries/small "tom.txt"
+ 1122  make speller
+ 1123   ./speller ~cs50/pset6/dictionaries/small "tom.txt"
+ 1124  make speller
+ 1125   ./speller ~cs50/pset6/dictionaries/small "tom.txt"
+ 1126  make speller
+ 1127   ./speller ~cs50/pset6/dictionaries/small "tom.txt"
+ 1128  make speller
+ 1129   ./speller ~cs50/pset6/dictionaries/small "tom.txt"
+ 1130  make speller
+ 1131   ./speller ~cs50/pset6/dictionaries/small "tom.txt"
+ 1132  make speller
+ 1133   ./speller ~cs50/pset6/dictionaries/small "tom.txt"
+ 1134  make speller
+ 1135   ./speller ~cs50/pset6/dictionaries/small "tom.txt"
+ 1136  ls -a
+ 1137  gedit DICTIONARY
+ 1138  make speller
+ 1139  make DICTIONARY
+ 1140  ./speller DICTIONARY test.txt
+ 1141  make speller
+ 1142  ./speller DICTIONARY test.txt
+ 1143  make speller
+ 1144  ./speller DICTIONARY test.txt
+ 1145  make speller
+ 1146  ./speller DICTIONARY test.txt
+ 1147  make speller
+ 1148  ./speller DICTIONARY test.txt
+ 1149  make speller
+ 1150  ./speller DICTIONARY test.txt
+ 1151  make speller
+ 1152  ./speller DICTIONARY test.txt
+ 1153  make speller
+ 1154  ./speller DICTIONARY test.txt
+ 1155  make speller
+ 1156  ./speller DICTIONARY test.txt
+ 1157  make speller
+ 1158  ./speller DICTIONARY test.txt
+ 1159  make speller
+ 1160  ./speller DICTIONARY test.txt
+ 1161  make speller
+ 1162  ./speller DICTIONARY test.txt
+ 1163  make speller
+ 1164  ./speller DICTIONARY test.txt
+ 1165  make speller
+ 1166  ./speller DICTIONARY test.txt
+ 1167  make speller
+ 1168  ./speller DICTIONARY test.txt
+ 1169  gdb ./speller DICTIONARY test.txt
+ 1170  ./speller DICTIONARY test.txt
+ 1171  make speller
+ 1172  ./speller DICTIONARY test.txt
+ 1173  make speller
+ 1174  ./speller DICTIONARY test.txt
+ 1175  make speller
+ 1176  ./speller DICTIONARY test.txt
+ 1177  make speller
+ 1178  ./speller DICTIONARY test.txt
+ 1179  make speller
+ 1180  ./speller DICTIONARY test.txt
+ 1181  make speller
+ 1182  ./speller DICTIONARY test.txt
+ 1183  make speller
+ 1184  ./speller DICTIONARY test.txt
+ 1185  make speller
+ 1186  ./speller DICTIONARY test.txt
+ 1187  make speller
+ 1188  ./speller DICTIONARY test.txt
+ 1189  make speller
+ 1190  ./speller DICTIONARY test.txt
+ 1191  make speller
+ 1192  ./speller DICTIONARY test.txt
+ 1193  make speller
+ 1194  ./speller DICTIONARY test.txt
+ 1195  make speller
+ 1196  ./speller DICTIONARY test.txt
+ 1197  make speller
+ 1198  ./speller DICTIONARY test.txt
+ 1199  make speller
+ 1200  ./speller DICTIONARY test.txt
+ 1201  make speller
+ 1202  ./speller DICTIONARY test.txt
+ 1203  make speller
+ 1204  ./speller DICTIONARY test.txt
+ 1205  make speller
+ 1206  ./speller DICTIONARY test.txt
+ 1207  make speller
+ 1208  ./speller DICTIONARY test.txt
+ 1209  gdb ./speller DICTIONARY test.txt
+ 1210  gdb ./speller 'DICTIONARY' 'test.txt'
+ 1211  man strcpy
+ 1212  make speller
+ 1213  ./speller DICTIONARY test.txt
+ 1214  make speller
+ 1215  ./speller DICTIONARY test.txt
+ 1216  make speller
+ 1217  ./speller DICTIONARY test.txt
+ 1218  make speller
+ 1219  ./speller DICTIONARY test.txt
+ 1220  make speller
+ 1221  ./speller DICTIONARY test.txt
+ 1222  make speller
+ 1223  ./speller DICTIONARY test.txt
+ 1224  make speller
+ 1225  ./speller DICTIONARY test.txt
+ 1226  make speller
+ 1227  ./speller DICTIONARY test.txt
+ 1228  make speller
+ 1229  ./speller DICTIONARY test.txt
+ 1230  make speller
+ 1231  ./speller DICTIONARY test.txt
+ 1232  make speller
+ 1233  ./speller DICTIONARY test.txt
+ 1234  git add .
+ 1235  git commit -am "Who knows anymore..."
+ 1236  make speller
+ 1237  git add .
+ 1238  git commit -am "It compiled. Have not attempted to run, yet."
+ 1239  ./speller DICTIONARY test.txt
+ 1240  make speller
+ 1241  ./speller DICTIONARY test.txt
+ 1242  make speller
+ 1243  ./speller DICTIONARY test.txt
+ 1244  make speller
+ 1245  ./speller DICTIONARY test.txt
+ 1246  make speller
+ 1247  ./speller DICTIONARY test.txt
+ 1248  make speller
+ 1249  ./speller DICTIONARY test.txt
+ 1250  make speller
+ 1251  ./speller DICTIONARY test.txt
+ 1252  make speller
+ 1253  ./speller DICTIONARY test.txt
+ 1254  make speller
+ 1255  ./speller DICTIONARY test.txt
+ 1256  make speller
+ 1257  ./speller DICTIONARY test.txt
+ 1258  make speller
+ 1259  ./speller DICTIONARY test.txt
+ 1260  make speller
+ 1261  ./speller DICTIONARY test.txt
+ 1262  make speller
+ 1263  ./speller DICTIONARY test.txt
+ 1264  make speller
+ 1265  ./speller DICTIONARY test.txt
+ 1266  make speller
+ 1267  ./speller DICTIONARY test.txt
+ 1268  make speller
+ 1269  ./speller DICTIONARY test.txt
+ 1270  make speller
+ 1271  ./speller DICTIONARY test.txt
+ 1272  make speller
+ 1273  ./speller DICTIONARY test.txt
+ 1274  make speller
+ 1275  ./speller DICTIONARY test.txt
+ 1276  make speller
+ 1277  ./speller DICTIONARY test.txt
+ 1278  make speller
+ 1279  ./speller DICTIONARY test.txt
+ 1280  make speller
+ 1281  ./speller DICTIONARY test.txt
+ 1282  make speller
+ 1283  ./speller DICTIONARY test.txt
+ 1284  make speller
+ 1285  ./speller DICTIONARY test.txt
+ 1286  make speller
+ 1287  ./speller DICTIONARY test.txt
+ 1288  git add .
+ 1289  git commit -am "Compiles and runs without crashing, but does not return any words as spelled correctly."
+ 1290  make speller
+ 1291  ./speller DICTIONARY test.txt
+ 1292  make speller
+ 1293  ./speller DICTIONARY test.txt
+ 1294  make speller
+ 1295  ./speller DICTIONARY test.txt
+ 1296  make speller
+ 1297  ./speller DICTIONARY test.txt
+ 1298  make speller
+ 1299  ./speller DICTIONARY test.txt
+ 1300  make speller
+ 1301  ./speller DICTIONARY test.txt
+ 1302  make speller
+ 1303  ./speller DICTIONARY test.txt
+ 1304  make speller
+ 1305  ./speller DICTIONARY test.txt
+ 1306  make speller
+ 1307  ./speller DICTIONARY test.txt
+ 1308  make speller
+ 1309  ./speller DICTIONARY test.txt
+ 1310  make speller
+ 1311  ./speller DICTIONARY test.txt
+ 1312  make speller
+ 1313  ./speller DICTIONARY test.txt
+ 1314  make speller
+ 1315  ./speller DICTIONARY test.txt
+ 1316  make speller
+ 1317  ./speller DICTIONARY test.txt
+ 1318  make speller
+ 1319  ./speller DICTIONARY test.txt
+ 1320  make speller
+ 1321  ./speller DICTIONARY test.txt
+ 1322  make speller
+ 1323  ./speller DICTIONARY test.txt
+ 1324  make speller
+ 1325  ./speller DICTIONARY test.txt
+ 1326  make speller
+ 1327  ./speller DICTIONARY test.txt
+ 1328  make speller
+ 1329  ./speller DICTIONARY test.txt
+ 1330  make speller
+ 1331  ./speller DICTIONARY test.txt
+ 1332  make speller
+ 1333  ./speller DICTIONARY test.txt
+ 1334  make speller
+ 1335  ./speller DICTIONARY test.txt
+ 1336  make speller
+ 1337  ./speller DICTIONARY test.txt
+ 1338  make speller
+ 1339  ./speller DICTIONARY test.txt
+ 1340  make speller
+ 1341  ./speller DICTIONARY test.txt
+ 1342  make speller
+ 1343  ./speller DICTIONARY test.txt
+ 1344  make speller
+ 1345  ./speller DICTIONARY test.txt
+ 1346  make speller
+ 1347  ./speller DICTIONARY test.txt
+ 1348  make speller
+ 1349  ./speller DICTIONARY test.txt
+ 1350  make speller
+ 1351  ./speller DICTIONARY test.txt
+ 1352  make speller
+ 1353  ./speller DICTIONARY test.txt
+ 1354  make speller
+ 1355  ./speller DICTIONARY test.txt
+ 1356  make speller
+ 1357  man fscanf
+ 1358  make speller
+ 1359  ./speller DICTIONARY test.txt
+ 1360  make speller
+ 1361  ./speller DICTIONARY test.txt
+ 1362  make speller
+ 1363  ./speller DICTIONARY test.txt
+ 1364  make speller
+ 1365  ./speller DICTIONARY test.txt
+ 1366  make speller
+ 1367  ./speller DICTIONARY test.txt
+ 1368  make speller
+ 1369  ./speller DICTIONARY test.txt
+ 1370  make speller
+ 1371  ./speller DICTIONARY test.txt
+ 1372  make speller
+ 1373  ./speller DICTIONARY test.txt
+ 1374  make speller
+ 1375  ./speller DICTIONARY test.txt
+ 1376  make speller
+ 1377  ./speller DICTIONARY test.txt
+ 1378  make speller
+ 1379  ./speller DICTIONARY test.txt
+ 1380  make speller
+ 1381  ./speller DICTIONARY test.txt
+ 1382  make speller
+ 1383  ./speller DICTIONARY test.txt
+ 1384  make speller
+ 1385  ./speller DICTIONARY test.txt
+ 1386  make speller
+ 1387  ./speller DICTIONARY test.txt
+ 1388  make speller
+ 1389  ./speller DICTIONARY test.txt
+ 1390  make speller
+ 1391  ./speller DICTIONARY test.txt
+ 1392  make speller
+ 1393  ./speller DICTIONARY test.txt
+ 1394  make speller
+ 1395  ./speller DICTIONARY test.txt
+ 1396  make speller
+ 1397  ./speller DICTIONARY test.txt
+ 1398  make speller
+ 1399  ./speller DICTIONARY test.txt
+ 1400  make speller
+ 1401  ./speller DICTIONARY test.txt
+ 1402  make speller
+ 1403  ./speller DICTIONARY test.txt
+ 1404  make speller
+ 1405  ./speller DICTIONARY test.txt
+ 1406  make speller
+ 1407  ./speller DICTIONARY test.txt
+ 1408  make speller
+ 1409  ./speller DICTIONARY test.txt
+ 1410  make speller
+ 1411  ./speller DICTIONARY test.txt
+ 1412  make speller
+ 1413  ./speller DICTIONARY test.txt
+ 1414  make speller
+ 1415  ./speller DICTIONARY test.txt
+ 1416  make speller
+ 1417  ./speller DICTIONARY test.txt
+ 1418  make speller
+ 1419  ./speller DICTIONARY test.txt
+ 1420  make speller
+ 1421  ./speller DICTIONARY test.txt
+ 1422  make speller
+ 1423  ./speller DICTIONARY test.txt
+ 1424  make speller
+ 1425  ./speller DICTIONARY test.txt
+ 1426  make speller
+ 1427  ./speller DICTIONARY test.txt
+ 1428  make speller
+ 1429  ./speller DICTIONARY test.txt
+ 1430  make speller
+ 1431  ./speller DICTIONARY test.txt
+ 1432  make speller
+ 1433  ./speller DICTIONARY test.txt
+ 1434  make speller
+ 1435  ./speller DICTIONARY test.txt
+ 1436  make speller
+ 1437  ./speller DICTIONARY test.txt
+ 1438  make speller
+ 1439  ./speller DICTIONARY test.txt
+ 1440  make speller
+ 1441  ./speller DICTIONARY test.txt
+ 1442  make speller
+ 1443  ./speller DICTIONARY test.txt
+ 1444  make speller
+ 1445  ./speller DICTIONARY test.txt
+ 1446  make speller
+ 1447  ./speller DICTIONARY test.txt
+ 1448  make speller
+ 1449  ./speller DICTIONARY test.txt
+ 1450  make speller
+ 1451  ./speller DICTIONARY test.txt
+ 1452  make speller
+ 1453  ./speller DICTIONARY test.txt
+ 1454  make speller
+ 1455  ./speller DICTIONARY test.txt
+ 1456  make speller
+ 1457  ./speller DICTIONARY test.txt
+ 1458  make speller
+ 1459  ./speller DICTIONARY test.txt
+ 1460  make speller
+ 1461  ./speller DICTIONARY test.txt
+ 1462  make speller
+ 1463  ./speller DICTIONARY test.txt
+ 1464  make speller
+ 1465  ./speller DICTIONARY test.txt
+ 1466  cd "/home/jharvard/Dropbox/pset6"
+ 1467  ./speller DICTIONARY test.txt
+ 1468  make speller
+ 1469  ./speller DICTIONARY test.txt
+ 1470  make speller
+ 1471  ./speller DICTIONARY test.txt
+ 1472  make speller
+ 1473  ./speller DICTIONARY test.txt
+ 1474  make speller
+ 1475  ./speller DICTIONARY test.txt
+ 1476  make speller
+ 1477  ./speller DICTIONARY test.txt
+ 1478  make speller
+ 1479  ./speller DICTIONARY test.txt
+ 1480  make speller
+ 1481  ./speller DICTIONARY test.txt
+ 1482  make speller
+ 1483  ./speller DICTIONARY test.txt
+ 1484  make speller
+ 1485  ./speller DICTIONARY test.txt
+ 1486  make speller
+ 1487  ./speller DICTIONARY test.txt
+ 1488  make speller
+ 1489  ./speller DICTIONARY test.txt
+ 1490  make speller
+ 1491  ./speller DICTIONARY test.txt
+ 1492  make speller
+ 1493  ./speller DICTIONARY test.txt
+ 1494  make speller
+ 1495  ./speller DICTIONARY test.txt
+ 1496  make speller
+ 1497  ./speller DICTIONARY test.txt
+ 1498  make speller
+ 1499  ./speller DICTIONARY test.txt
+ 1500  make speller
+ 1501  ./speller DICTIONARY test.txt
+ 1502  make speller
+ 1503  ./speller DICTIONARY test.txt
+ 1504  make speller
+ 1505  ./speller DICTIONARY test.txt
+ 1506  history
+ 1507  gdb ./speller DICTIONARY test.txt
+ 1508  gdb ./speller
+ 1509  make speller
+ 1510  ./speller DICTIONARY test.txt
+ 1511  make speller
+ 1512  ./speller DICTIONARY test.txt
+ 1513  make speller
+ 1514  ./speller DICTIONARY test.txt
+ 1515  make speller
+ 1516  ./speller DICTIONARY test.txt
+ 1517  make speller
+ 1518  ./speller DICTIONARY test.txt
+ 1519  make speller
+ 1520  ./speller DICTIONARY test.txt
+ 1521  make speller
+ 1522  ./speller DICTIONARY test.txt
+ 1523  make speller
+ 1524  ./speller DICTIONARY test.txt
+ 1525  make speller
+ 1526  ./speller DICTIONARY test.txt
+ 1527  make speller
+ 1528  ./speller DICTIONARY test.txt
+ 1529  make speller
+ 1530  ./speller DICTIONARY test.txt
+ 1531  make speller
+ 1532  ./speller DICTIONARY test.txt
+ 1533  gdb ./speller
+ 1534  make speller
+ 1535  ./speller DICTIONARY test.txt
+ 1536  make speller
+ 1537  ./speller DICTIONARY test.txt
+ 1538  make speller
+ 1539  ./speller DICTIONARY test.txt
+ 1540  make speller
+ 1541  ./speller DICTIONARY test.txt
+ 1542  make speller
+ 1543  ./speller DICTIONARY test.txt
+ 1544  make speller
+ 1545  ./speller DICTIONARY test.txt
+ 1546  make speller
+ 1547  ./speller DICTIONARY test.txt
+ 1548  make speller
+ 1549  ./speller DICTIONARY test.txt
+ 1550  make speller
+ 1551  ./speller DICTIONARY test.txt
+ 1552  make speller
+ 1553  ./speller DICTIONARY test.txt
+ 1554  make speller
+ 1555  ./speller DICTIONARY test.txt
+ 1556  make speller
+ 1557  ./speller DICTIONARY test.txt
+ 1558  make speller
+ 1559  ./speller DICTIONARY test.txt
+ 1560  make speller
+ 1561  ./speller DICTIONARY test.txt
+ 1562  make speller
+ 1563  ./speller DICTIONARY test.txt
+ 1564  make speller
+ 1565  ./speller DICTIONARY test.txt
+ 1566  make speller
+ 1567  ./speller DICTIONARY test.txt
+ 1568  make speller
+ 1569  ./speller DICTIONARY test.txt
+ 1570  gdb ./speller
+ 1571  make speller
+ 1572  ./speller DICTIONARY test.txt
+ 1573  make speller
+ 1574  ./speller DICTIONARY test.txt
+ 1575  make speller
+ 1576  ./speller DICTIONARY test.txt
+ 1577  make speller
+ 1578  ./speller DICTIONARY test.txt
+ 1579  make speller
+ 1580  ./speller DICTIONARY test.txt
+ 1581  make speller
+ 1582  ./speller DICTIONARY test.txt
+ 1583  gdb ./speller
+ 1584  make speller
+ 1585  gdb ./speller
+ 1586  make speller
+ 1587  ./speller DICTIONARY test.txt
+ 1588  make speller
+ 1589  ./speller DICTIONARY test.txt
+ 1590  make speller
+ 1591  ./speller DICTIONARY test.txt
+ 1592  make speller
+ 1593  ./speller DICTIONARY test.txt
+ 1594  make speller
+ 1595  ./speller DICTIONARY test.txt
+ 1596  make speller
+ 1597  ./speller DICTIONARY test.txt
+ 1598  make speller
+ 1599  ./speller DICTIONARY test.txt
+ 1600  make speller
+ 1601  ./speller DICTIONARY test.txt
+ 1602  git add .
+ 1603  git commit -am "It works... kinda. Needs work on unload()."
+ 1604  ./speller test.txt
+ 1605  touch 06aug14History
+ 1606  history > 06aug14History
