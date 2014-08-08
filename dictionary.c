@@ -94,7 +94,7 @@ unsigned int hash(const char* word)
 
 bool check(const char* word)
 {
-	printf("word = %s\n", word);	
+	//printf("word = %s\n", word);	
 	hashResult = hash(word);
 	if(hashResult < 0 || hashResult > wordCount){return false;}
 	node *currentNode = hashTable->first[hashResult];
@@ -114,7 +114,7 @@ bool check(const char* word)
     	}
     	if (loopEscape > 10)
     	{
-    		//printf("Had to use loopEscape with %s\n", currentNode->entry);
+    		printf("Had to use loopEscape with %s\n", currentNode->entry);
     		return false;
     	}
     	else return false;
@@ -318,9 +318,17 @@ unsigned int size(void)
  *******************************************************/
 bool unload(void)
 {
-    //node *previousNode;
-    //node *currentNode;
-  
+    for (int i = 0; i < wordCount; i++)
+    {
+    	node *currentNode = hashTable->first[i];
+	//printf("%s is the currentNode->entry @ %i: \n", currentNode->entry, hashResult);
+			while (currentNode != NULL)
+			{
+					node *previousNode = currentNode;
+					currentNode = currentNode->next;
+					free(previousNode);
+			}
+	}
     free(hashTable);
     
     printf("Words counted: %i\n", wordCount);
