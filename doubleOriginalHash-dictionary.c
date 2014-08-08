@@ -176,7 +176,7 @@ bool load(const char* dictionary)
     int wordsEntered = 0;
    
     //initialize hashtable
-    hashTable = createHashTable((wordCount + 1) * 2);
+    hashTable = createHashTable(wordCount + 1);
 //    printf("Creating hashtable...\n")
 
    // load words from dictionary into hashTable

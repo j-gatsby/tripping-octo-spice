@@ -1,0 +1,500 @@
+jharvard@appliance (~/Dropbox/pset6): valgrind ./speller tom.txt
+==19778== Memcheck, a memory error detector
+==19778== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
+==19778== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
+==19778== Command: ./speller tom.txt
+==19778== 
+wordCount is 143091
+dptr was closed successfully
+
+MISSPELLED WORDS
+
+Words counted: 143091
+Words inserted: 143091
+Hash collisions: 52710
+
+WORDS MISSPELLED:     29351
+WORDS IN DICTIONARY:  143091
+WORDS IN TEXT:        74451
+TIME IN load:         2.484000
+TIME IN check:        0.143000
+TIME IN size:         0.000000
+TIME IN unload:       0.171000
+TIME IN TOTAL:        2.798000
+
+==19778== 
+==19778== HEAP SUMMARY:
+==19778==     in use at exit: 572,368 bytes in 1 blocks
+==19778==   total heap usage: 143,095 allocs, 143,094 frees, 8,013,856 bytes allocated
+==19778== 
+==19778== LEAK SUMMARY:
+==19778==    definitely lost: 572,368 bytes in 1 blocks
+==19778==    indirectly lost: 0 bytes in 0 blocks
+==19778==      possibly lost: 0 bytes in 0 blocks
+==19778==    still reachable: 0 bytes in 0 blocks
+==19778==         suppressed: 0 bytes in 0 blocks
+==19778== Rerun with --leak-check=full to see details of leaked memory
+==19778== 
+==19778== For counts of detected and suppressed errors, rerun with: -v
+==19778== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+jharvard@appliance (~/Dropbox/pset6): make speller
+clang -ggdb3 -O0 -Qunused-arguments -std=c99 -Wall -Werror   -c -o dictionary.o dictionary.c
+clang -ggdb3 -O0 -Qunused-arguments -std=c99 -Wall -Werror -o speller speller.o dictionary.o 
+jharvard@appliance (~/Dropbox/pset6): ./speller tom.txt
+wordCount is 143091
+dptr was closed successfully
+
+MISSPELLED WORDS
+
+Words counted: 143091
+Words inserted: 143091
+Hash collisions: 52710
+
+WORDS MISSPELLED:     29351
+WORDS IN DICTIONARY:  143091
+WORDS IN TEXT:        74451
+TIME IN load:         0.120000
+TIME IN check:        0.034000
+TIME IN size:         0.000000
+TIME IN unload:       0.020000
+TIME IN TOTAL:        0.174000
+
+jharvard@appliance (~/Dropbox/pset6): valgrind ./speller tom.txt
+==20083== Memcheck, a memory error detector
+==20083== Copyright (C) 2002-2012, and GNU GPL'd, by Julian Seward et al.
+==20083== Using Valgrind-3.8.1 and LibVEX; rerun with -h for copyright info
+==20083== Command: ./speller tom.txt
+==20083== 
+wordCount is 143091
+dptr was closed successfully
+
+MISSPELLED WORDS
+
+Words counted: 143091
+Words inserted: 143091
+Hash collisions: 52710
+
+WORDS MISSPELLED:     29351
+WORDS IN DICTIONARY:  143091
+WORDS IN TEXT:        74451
+TIME IN load:         2.466000
+TIME IN check:        0.173000
+TIME IN size:         0.000000
+TIME IN unload:       0.163000
+TIME IN TOTAL:        2.802000
+
+==20083== 
+==20083== HEAP SUMMARY:
+==20083==     in use at exit: 0 bytes in 0 blocks
+==20083==   total heap usage: 143,095 allocs, 143,095 frees, 8,013,856 bytes allocated
+==20083== 
+==20083== All heap blocks were freed -- no leaks are possible
+==20083== 
+==20083== For counts of detected and suppressed errors, rerun with: -v
+==20083== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+jharvard@appliance (~/Dropbox/pset6): git add .
+jharvard@appliance (~/Dropbox/pset6): git commit -am "Works, passes Valgrind"
+[master 487ac44] Works, passes Valgrind
+ 4 files changed, 180 insertions(+)
+ create mode 100644 firstResultsOutput.txt
+jharvard@appliance (~/Dropbox/pset6): ./speller tom.txt
+wordCount is 143091
+dptr was closed successfully
+
+MISSPELLED WORDS
+
+Words counted: 143091
+Words inserted: 143091
+Hash collisions: 52710
+
+WORDS MISSPELLED:     29351
+WORDS IN DICTIONARY:  143091
+WORDS IN TEXT:        74451
+TIME IN load:         0.118000
+TIME IN check:        0.023000
+TIME IN size:         0.000000
+TIME IN unload:       0.022000
+TIME IN TOTAL:        0.163000
+
+jharvard@appliance (~/Dropbox/pset6): ./speller tom.txt
+wordCount is 143091
+dptr was closed successfully
+
+MISSPELLED WORDS
+
+Words counted: 143091
+Words inserted: 143091
+Hash collisions: 52710
+
+WORDS MISSPELLED:     29351
+WORDS IN DICTIONARY:  143091
+WORDS IN TEXT:        74451
+TIME IN load:         0.115000
+TIME IN check:        0.032000
+TIME IN size:         0.000000
+TIME IN unload:       0.019000
+TIME IN TOTAL:        0.166000
+
+jharvard@appliance (~/Dropbox/pset6): ./speller tom.txt
+wordCount is 143091
+dptr was closed successfully
+
+MISSPELLED WORDS
+
+Words counted: 143091
+Words inserted: 143091
+Hash collisions: 52710
+
+WORDS MISSPELLED:     29351
+WORDS IN DICTIONARY:  143091
+WORDS IN TEXT:        74451
+TIME IN load:         0.117000
+TIME IN check:        0.023000
+TIME IN size:         0.000000
+TIME IN unload:       0.019000
+TIME IN TOTAL:        0.159000
+
+jharvard@appliance (~/Dropbox/pset6): ./speller tom.txt
+wordCount is 143091
+dptr was closed successfully
+
+MISSPELLED WORDS
+
+Words counted: 143091
+Words inserted: 143091
+Hash collisions: 52710
+
+WORDS MISSPELLED:     29351
+WORDS IN DICTIONARY:  143091
+WORDS IN TEXT:        74451
+TIME IN load:         0.114000
+TIME IN check:        0.027000
+TIME IN size:         0.000000
+TIME IN unload:       0.021000
+TIME IN TOTAL:        0.162000
+
+jharvard@appliance (~/Dropbox/pset6): ./speller tom.txt
+wordCount is 143091
+dptr was closed successfully
+
+MISSPELLED WORDS
+
+Words counted: 143091
+Words inserted: 143091
+Hash collisions: 52710
+
+WORDS MISSPELLED:     29351
+WORDS IN DICTIONARY:  143091
+WORDS IN TEXT:        74451
+TIME IN load:         0.115000
+TIME IN check:        0.032000
+TIME IN size:         0.000000
+TIME IN unload:       0.019000
+TIME IN TOTAL:        0.166000
+
+jharvard@appliance (~/Dropbox/pset6): ./speller tom.txt
+wordCount is 143091
+dptr was closed successfully
+
+MISSPELLED WORDS
+
+Words counted: 143091
+Words inserted: 143091
+Hash collisions: 52710
+
+WORDS MISSPELLED:     29351
+WORDS IN DICTIONARY:  143091
+WORDS IN TEXT:        74451
+TIME IN load:         0.170000
+TIME IN check:        0.027000
+TIME IN size:         0.000000
+TIME IN unload:       0.020000
+TIME IN TOTAL:        0.217000
+
+jharvard@appliance (~/Dropbox/pset6): ./speller tom.txt
+wordCount is 143091
+dptr was closed successfully
+
+MISSPELLED WORDS
+
+Words counted: 143091
+Words inserted: 143091
+Hash collisions: 52710
+
+WORDS MISSPELLED:     29351
+WORDS IN DICTIONARY:  143091
+WORDS IN TEXT:        74451
+TIME IN load:         0.184000
+TIME IN check:        0.036000
+TIME IN size:         0.000000
+TIME IN unload:       0.019000
+TIME IN TOTAL:        0.239000
+
+jharvard@appliance (~/Dropbox/pset6): ./speller tom.txt
+wordCount is 143091
+dptr was closed successfully
+
+MISSPELLED WORDS
+
+Words counted: 143091
+Words inserted: 143091
+Hash collisions: 52710
+
+WORDS MISSPELLED:     29351
+WORDS IN DICTIONARY:  143091
+WORDS IN TEXT:        74451
+TIME IN load:         0.117000
+TIME IN check:        0.024000
+TIME IN size:         0.000000
+TIME IN unload:       0.019000
+TIME IN TOTAL:        0.160000
+
+jharvard@appliance (~/Dropbox/pset6): ./speller tom.txt
+wordCount is 143091
+dptr was closed successfully
+
+MISSPELLED WORDS
+
+Words counted: 143091
+Words inserted: 143091
+Hash collisions: 52710
+
+WORDS MISSPELLED:     29351
+WORDS IN DICTIONARY:  143091
+WORDS IN TEXT:        74451
+TIME IN load:         0.114000
+TIME IN check:        0.023000
+TIME IN size:         0.000000
+TIME IN unload:       0.019000
+TIME IN TOTAL:        0.156000
+
+jharvard@appliance (~/Dropbox/pset6): ./speller tom.txt
+wordCount is 143091
+dptr was closed successfully
+
+MISSPELLED WORDS
+
+Words counted: 143091
+Words inserted: 143091
+Hash collisions: 52710
+
+WORDS MISSPELLED:     29351
+WORDS IN DICTIONARY:  143091
+WORDS IN TEXT:        74451
+TIME IN load:         0.116000
+TIME IN check:        0.022000
+TIME IN size:         0.000000
+TIME IN unload:       0.019000
+TIME IN TOTAL:        0.157000
+
+jharvard@appliance (~/Dropbox/pset6): ./speller tom.txt
+wordCount is 143091
+dptr was closed successfully
+
+MISSPELLED WORDS
+
+Words counted: 143091
+Words inserted: 143091
+Hash collisions: 52710
+
+WORDS MISSPELLED:     29351
+WORDS IN DICTIONARY:  143091
+WORDS IN TEXT:        74451
+TIME IN load:         0.157000
+TIME IN check:        0.030000
+TIME IN size:         0.000000
+TIME IN unload:       0.019000
+TIME IN TOTAL:        0.206000
+
+jharvard@appliance (~/Dropbox/pset6): ./speller tom.txt
+wordCount is 143091
+dptr was closed successfully
+
+MISSPELLED WORDS
+
+Words counted: 143091
+Words inserted: 143091
+Hash collisions: 52710
+
+WORDS MISSPELLED:     29351
+WORDS IN DICTIONARY:  143091
+WORDS IN TEXT:        74451
+TIME IN load:         0.122000
+TIME IN check:        0.033000
+TIME IN size:         0.000000
+TIME IN unload:       0.020000
+TIME IN TOTAL:        0.175000
+
+jharvard@appliance (~/Dropbox/pset6): ./speller tom.txt
+wordCount is 143091
+dptr was closed successfully
+
+MISSPELLED WORDS
+
+Words counted: 143091
+Words inserted: 143091
+Hash collisions: 52710
+
+WORDS MISSPELLED:     29351
+WORDS IN DICTIONARY:  143091
+WORDS IN TEXT:        74451
+TIME IN load:         0.117000
+TIME IN check:        0.037000
+TIME IN size:         0.000000
+TIME IN unload:       0.019000
+TIME IN TOTAL:        0.173000
+
+jharvard@appliance (~/Dropbox/pset6): ./speller tom.txt
+wordCount is 143091
+dptr was closed successfully
+
+MISSPELLED WORDS
+
+Words counted: 143091
+Words inserted: 143091
+Hash collisions: 52710
+
+WORDS MISSPELLED:     29351
+WORDS IN DICTIONARY:  143091
+WORDS IN TEXT:        74451
+TIME IN load:         0.129000
+TIME IN check:        0.023000
+TIME IN size:         0.000000
+TIME IN unload:       0.022000
+TIME IN TOTAL:        0.174000
+
+jharvard@appliance (~/Dropbox/pset6): ./speller tom.txt
+wordCount is 143091
+dptr was closed successfully
+
+MISSPELLED WORDS
+
+Words counted: 143091
+Words inserted: 143091
+Hash collisions: 52710
+
+WORDS MISSPELLED:     29351
+WORDS IN DICTIONARY:  143091
+WORDS IN TEXT:        74451
+TIME IN load:         0.116000
+TIME IN check:        0.040000
+TIME IN size:         0.000000
+TIME IN unload:       0.037000
+TIME IN TOTAL:        0.193000
+
+jharvard@appliance (~/Dropbox/pset6): ./speller tom.txt
+wordCount is 143091
+dptr was closed successfully
+
+MISSPELLED WORDS
+
+Words counted: 143091
+Words inserted: 143091
+Hash collisions: 52710
+
+WORDS MISSPELLED:     29351
+WORDS IN DICTIONARY:  143091
+WORDS IN TEXT:        74451
+TIME IN load:         0.122000
+TIME IN check:        0.031000
+TIME IN size:         0.000000
+TIME IN unload:       0.018000
+TIME IN TOTAL:        0.171000
+
+jharvard@appliance (~/Dropbox/pset6): ./speller tom.txt
+wordCount is 143091
+dptr was closed successfully
+
+MISSPELLED WORDS
+
+Words counted: 143091
+Words inserted: 143091
+Hash collisions: 52710
+
+WORDS MISSPELLED:     29351
+WORDS IN DICTIONARY:  143091
+WORDS IN TEXT:        74451
+TIME IN load:         0.117000
+TIME IN check:        0.037000
+TIME IN size:         0.000000
+TIME IN unload:       0.022000
+TIME IN TOTAL:        0.176000
+
+jharvard@appliance (~/Dropbox/pset6): ./speller tom.txt
+wordCount is 143091
+dptr was closed successfully
+
+MISSPELLED WORDS
+
+Words counted: 143091
+Words inserted: 143091
+Hash collisions: 52710
+
+WORDS MISSPELLED:     29351
+WORDS IN DICTIONARY:  143091
+WORDS IN TEXT:        74451
+TIME IN load:         0.120000
+TIME IN check:        0.032000
+TIME IN size:         0.000000
+TIME IN unload:       0.022000
+TIME IN TOTAL:        0.174000
+
+jharvard@appliance (~/Dropbox/pset6): ./speller tom.txt
+wordCount is 143091
+dptr was closed successfully
+
+MISSPELLED WORDS
+
+Words counted: 143091
+Words inserted: 143091
+Hash collisions: 52710
+
+WORDS MISSPELLED:     29351
+WORDS IN DICTIONARY:  143091
+WORDS IN TEXT:        74451
+TIME IN load:         0.118000
+TIME IN check:        0.042000
+TIME IN size:         0.000000
+TIME IN unload:       0.019000
+TIME IN TOTAL:        0.179000
+
+jharvard@appliance (~/Dropbox/pset6): ./speller tom.txt
+wordCount is 143091
+dptr was closed successfully
+
+MISSPELLED WORDS
+
+Words counted: 143091
+Words inserted: 143091
+Hash collisions: 52710
+
+WORDS MISSPELLED:     29351
+WORDS IN DICTIONARY:  143091
+WORDS IN TEXT:        74451
+TIME IN load:         0.113000
+TIME IN check:        0.041000
+TIME IN size:         0.000000
+TIME IN unload:       0.019000
+TIME IN TOTAL:        0.173000
+
+jharvard@appliance (~/Dropbox/pset6): ./speller tom.txt
+wordCount is 143091
+dptr was closed successfully
+
+MISSPELLED WORDS
+
+Words counted: 143091
+Words inserted: 143091
+Hash collisions: 52710
+
+WORDS MISSPELLED:     29351
+WORDS IN DICTIONARY:  143091
+WORDS IN TEXT:        74451
+TIME IN load:         0.117000
+TIME IN check:        0.031000
+TIME IN size:         0.000000
+TIME IN unload:       0.019000
+TIME IN TOTAL:        0.167000
+
+jharvard@appliance (~/Dropbox/pset6): 
+

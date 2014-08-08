@@ -88,7 +88,7 @@ unsigned int hash(const char* word)
     /* we then return the hash value mod the hashtable size so that it will
      * fit into the necessary range
      */
-     hashResult = hashValue % (wordCount * 2);
+     hashResult = hashValue % wordCount;
     return hashResult;
 }
 
@@ -96,7 +96,7 @@ bool check(const char* word)
 {
 	//printf("word = %s\n", word);	
 	hashResult = hash(word);
-	if(hashResult < 0 || hashResult > (wordCount * 2)){return false;}
+	if(hashResult < 0 || hashResult > wordCount){return false;}
 	node *currentNode = hashTable->first[hashResult];
 	//printf("%s is the currentNode->entry @ %i: \n", currentNode->entry, hashResult);
     for (int loopEscape = 0; currentNode != NULL; loopEscape++)
@@ -176,7 +176,7 @@ bool load(const char* dictionary)
     int wordsEntered = 0;
    
     //initialize hashtable
-    hashTable = createHashTable((wordCount + 1) * 2);
+    hashTable = createHashTable(wordCount + 1);
 //    printf("Creating hashtable...\n")
 
    // load words from dictionary into hashTable
