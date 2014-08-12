@@ -118,30 +118,7 @@ bool load(const char* dictionary)
     {
     	return false;
     }
- /*
-    char buffer[sizeof(LENGTH + 1)];
- 	 int chars_read = 0;
-    
-    // check number of words in dptr
-    while (feof(dptr) == 0)	
-    { 	
-			// read card to buffer, one byte at a time
-			fread(&buffer[chars_read], sizeof(char), 1, dptr);
-			 
-			// if the end of a word is found
-		if (buffer[chars_read] == '\n')
-		{ 
-				// increment counter for words in Dictionary
-				wordCount++;
-				// clear out the buffer
-    			memset(buffer, '\0', sizeof(buffer));
-		}
-	}
-    
-    // reset file position indicator to beginning of dptr
-    fseek(dptr, 0, SEEK_SET);
-    */
-    // set hashtableSize to twice the number of words
+ 	// set hashtableSize to SEED
   	hashtableSize = SEED; 
     //initialize hashtable
     hashTable = createHashTable(hashtableSize);
