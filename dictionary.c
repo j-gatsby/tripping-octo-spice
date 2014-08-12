@@ -19,7 +19,7 @@
 #define DICTIONARY "home/cs50/pset6/dictionaries/large"
 
 #define SEED 54381
-#define MULTIPLIER 1.7
+#define MULTIPLIER 1.23
 
 // create data structures
     typedef struct node
@@ -42,8 +42,6 @@ hashtable *hashTable;
 hashtable *createHashTable(unsigned int size)
 {
     hashtable *new_table;
-    
-    if (size<1) return NULL; /* invalid size for table */
 
     /* Attempt to allocate memory for the table structure */
     if ((new_table = malloc(sizeof(node))) == NULL) {
@@ -78,7 +76,7 @@ unsigned int hash(const char* word)
 }
 
 bool check(const char* word)
-{
+{ 
 	unsigned int len = strlen(word);
 	char dest[len + 1];
 	
@@ -109,7 +107,7 @@ bool check(const char* word)
 bool load(const char* dictionary)
 {
     // open dictionary file
-    FILE* dptr = fopen("DICTIONARY", "r");
+    FILE* dptr = fopen("DICTIONARY", "r"); 
     
     // ensure it worked
     if (dptr == NULL)
@@ -135,7 +133,8 @@ bool load(const char* dictionary)
   		for (unsigned int c = fgetc(dptr); feof(dptr) == 0; c = fgetc(dptr))
     	{
             	// bitwise op instead of tolower
-            new_node->entry[index] =  c =(c &~(1<<5));
+            c =(c &~(1<<5));
+            new_node->entry[index] =  c;
            
 	            // terminate current word
 		       if (new_node->entry[index] == '\n')
