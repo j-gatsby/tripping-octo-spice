@@ -18,8 +18,6 @@
 // default dictionary
 #define DICTIONARY "home/cs50/pset6/dictionaries/large"
 
-#define SEED 54381
-
 // create data structures
     typedef struct node
     {
@@ -35,9 +33,7 @@
  
 FILE* dptr = NULL;
 unsigned int wordCount;
-unsigned int hashtableSize;
 hashtable *hashTable;
-unsigned int collisionCount;
 
 hashtable *createHashTable(unsigned int size)
 {
@@ -63,27 +59,27 @@ hashtable *createHashTable(unsigned int size)
 
     return new_table;
 }
- 
-// djb2  , then modified based on results
+
 unsigned int hash(const char* word)
 {
-	unsigned int hashValue = SEED;
+	//unsigned int wordTotal = wordCount;
+    unsigned int hashValue = 101;
 
     for(; *word != '\0'; word++) 
     {
-    	hashValue = *word + (hashValue << 6) - hashValue;
+    	hashValue = *word + (hashValue << 6)  - hashValue;
     } 
 
-	//unsigned int hashResult = hashValue % hashtableSize;
+	unsigned int hashResult = hashValue % wordCount;
 
-
-    return hashValue % hashtableSize; 
+    return hashResult; 
 }
 
 bool check(const char* word)
 {
 	unsigned int len = strlen(word);
 	char dest[len];
+	//unsigned int wordTotal = wordCount;
 	
 	strcpy(dest, word);
 	for (unsigned int i = 0; i < len; i++)
@@ -118,88 +114,73 @@ bool load(const char* dictionary)
     {
     	return false;
     }
- /*
+    
     char buffer[sizeof(LENGTH + 1)];
- 	 int chars_read = 0;
+    int chars_read = 0;
+    //unsigned int dptrWords = 0;
     
     // check number of words in dptr
+     // until the end of the file is reached...
     while (feof(dptr) == 0)	
     { 	
+		//for (chars_read =0;  chars_read < LENGTH + 1; chars_read++)
+		//{
 			// read card to buffer, one byte at a time
 			fread(&buffer[chars_read], sizeof(char), 1, dptr);
 			 
 			// if the end of a word is found
-		if (buffer[chars_read] == '\n')
-		{ 
+			if (buffer[chars_read] == '\n')
+			{
 				// increment counter for words in Dictionary
 				wordCount++;
 				// clear out the buffer
     			memset(buffer, '\0', sizeof(buffer));
-		}
+			}
 	}
     
     // reset file position indicator to beginning of dptr
     fseek(dptr, 0, SEEK_SET);
-    */
-    // set hashtableSize to twice the number of words
-  	hashtableSize = SEED; 
+  
     //initialize hashtable
-    hashTable = createHashTable(hashtableSize);
-    // local variable to refer to in next loop
-	//unsigned int wordTotal = wordCount;
+    hashTable = createHashTable(wordCount);
+
    // load words from dictionary into hashTable
-  // for (unsigned int i = 0; i < wordCount; i++)
-  while (feof(dptr) == 0)	
+   while (feof(dptr) == 0)	
     {
     	node *new_node = malloc(sizeof(node));
     	if (new_node == NULL)
     	{
     		return false;
     	}
-
-		unsigned int index = 0;
-
-    	// read in each dictionary entry
-  		for (unsigned int c = fgetc(dptr); feof(dptr) == 0; c = fgetc(dptr))
-    	{
-            	// bitwise op instead of tolower
-            new_node->entry[index] =  c =(c &~(1<<5));
-           
-	            // terminate current word
-		       if (new_node->entry[index] == '\n')
-				{
-					new_node->entry[index] = '\0';
-    	        	break;
-    	      	}
-				else index++;
-		}
-		 if (feof(dptr) != 0)
-      	{
-      		    free(new_node);
-      		    
-      		    // fclose dictionary file
-				fclose(dptr);
-
-				// set bool to true
-				 return true;
-      	}
-    	      	
-		unsigned int hashResult = hash(new_node->entry);
-	
-		if (hashTable->first[hashResult] == NULL)
-		{
-			hashTable->first[hashResult]= new_node;
-			new_node->next = NULL;
-			wordCount++;
-		}
 		
-		else if (hashTable->first[hashResult] != NULL) 
+		char *word = NULL;
+		//  fscanf in instead of fgetc
+		fscanf(dptr, "%s", word);
+		if (feof(dptr) == 0)	
 		{
-			new_node->next = hashTable->first[hashResult];
-			hashTable->first[hashResult] = new_node;
-			wordCount++;
-			collisionCount++;
+			unsigned int len = strlen(word);
+			for (unsigned int i = 0; i < len; i++)
+			{
+			// bitwise op instead of tolower
+			new_node->entry[i] = word[i] &~(1<<5);
+			}
+		
+			new_node->next = NULL;
+			unsigned int hashResult = hash(new_node->entry);
+	
+			if (hashTable->first[hashResult] == NULL)
+			{
+				hashTable->first[hashResult]= new_node;
+				new_node->next = NULL;
+			}
+		
+			else if (hashTable->first[hashResult] != NULL) 
+			{
+				new_node->next = hashTable->first[hashResult];
+				hashTable->first[hashResult] = new_node;
+			}
 		}
+		else break;
 	}
 	
     // fclose dictionary file
@@ -222,8 +203,8 @@ unsigned int size(void)
  *******************************************************/
 bool unload(void)
 {
-	unsigned int nodeTotal = hashtableSize;
-    for (unsigned int i = 0; i < nodeTotal; i++)
+	unsigned int wordTotal = wordCount;
+    for (unsigned int i = 0; i < wordTotal; i++)
     {
     	node *currentNode = hashTable->first[i];
 
@@ -231,12 +212,11 @@ bool unload(void)
 			{
 					node *previousNode = currentNode;
 					currentNode = currentNode->next;
-					free(previousNode); 
+					free(previousNode);
 			}
 	}
 	free(hashTable->first);
-   free(hashTable); 
-   printf("wordCount = %i\n", wordCount);
-    printf("collisionCount = %i\n", collisionCount);
+   free(hashTable);
+    
   	return true;  
 }
