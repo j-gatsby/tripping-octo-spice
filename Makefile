@@ -7,10 +7,10 @@
 
 
 # compiler to use
-CC = clang
+CC = gcc
 
 # flags to pass compiler
-CFLAGS = -ggdb3 -O0  -std=c99 -Wall -Werror -Qunused-arguments 
+CFLAGS = -O0  -std=c99
 
 # name for executable
 EXE = speller

@@ -19,6 +19,7 @@
 #define DICTIONARY "home/cs50/pset6/dictionaries/large"
 
 #define SEED 54381
+#define MULTIPLIER 1.7
 
 // create data structures
     typedef struct node
@@ -37,7 +38,6 @@ FILE* dptr = NULL;
 unsigned int wordCount;
 unsigned int hashtableSize;
 hashtable *hashTable;
-unsigned int collisionCount;
 
 hashtable *createHashTable(unsigned int size)
 {
@@ -68,30 +68,28 @@ hashtable *createHashTable(unsigned int size)
 unsigned int hash(const char* word)
 {
 	unsigned int hashValue = SEED;
-
+	
     for(; *word != '\0'; word++) 
     {
     	hashValue = *word + (hashValue << 6) - hashValue;
     } 
 
-	//unsigned int hashResult = hashValue % hashtableSize;
-
-
-    return hashValue % hashtableSize; 
+    return hashValue % hashtableSize;
 }
 
 bool check(const char* word)
 {
 	unsigned int len = strlen(word);
-	char dest[len];
+	char dest[len + 1];
 	
 	strcpy(dest, word);
 	for (unsigned int i = 0; i < len; i++)
 	{
 		// bitwise op instead of tolower
 		dest[i] = dest[i] &~(1<<5);
-
 	}
+	dest[len + 1] = '\0';
+	
 	unsigned int hashResult = hash(dest);
 	
 	node *currentNode = hashTable->first[hashResult];
@@ -118,14 +116,11 @@ bool load(const char* dictionary)
     {
     	return false;
     }
- 	// set hashtableSize to SEED
-  	hashtableSize = SEED; 
+ 	// set hashtableSize to SEED times MULTIPLIER
+  	hashtableSize = SEED * MULTIPLIER; 
     //initialize hashtable
     hashTable = createHashTable(hashtableSize);
-    // local variable to refer to in next loop
-	//unsigned int wordTotal = wordCount;
-   // load words from dictionary into hashTable
-  // for (unsigned int i = 0; i < wordCount; i++)
+    
   while (feof(dptr) == 0)	
     {
     	node *new_node = malloc(sizeof(node));
@@ -175,7 +170,6 @@ bool load(const char* dictionary)
 			new_node->next = hashTable->first[hashResult];
 			hashTable->first[hashResult] = new_node;
 			wordCount++;
-			collisionCount++;
 		}
 	}
 	
@@ -213,7 +207,6 @@ bool unload(void)
 	}
 	free(hashTable->first);
    free(hashTable); 
-   printf("wordCount = %i\n", wordCount);
-    printf("collisionCount = %i\n", collisionCount);
+
   	return true;  
 }
