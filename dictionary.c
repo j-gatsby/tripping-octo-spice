@@ -6,12 +6,12 @@
  *
  * Implements a dictionary's functionality.
  ***************************************************************************/
-#include <stdlib.h>
-#include <stdbool.h>
-#include <stdio.h>
-#include <stdint.h>
-#include <string.h>
-#include <ctype.h>
+#pragma <stdlib.h>
+#pragma <stdbool.h>
+#pragma <stdio.h>
+#pragma <stdint.h>
+#pragma <string.h>
+#pragma <ctype.h>
 
 #include "dictionary.h"
 
@@ -19,7 +19,7 @@
 #define DICTIONARY "home/cs50/pset6/dictionaries/large"
 
 #define SEED 54381
-#define MULTIPLIER 1.23
+#define MULTIPLIER 2.25
 
 // create data structures
     typedef struct node
@@ -52,10 +52,10 @@ hashtable *createHashTable(unsigned int size)
     if ((new_table->first = malloc(sizeof(node *) * size)) == NULL) {
         return NULL;
     }
-
+    
     /* Initialize the elements of the table */
     for(unsigned int i=0; i<size; i++) new_table->first[i] = NULL;
-    
+   
     /* Set the table's size */
     new_table->size = size;
 
@@ -133,8 +133,7 @@ bool load(const char* dictionary)
   		for (unsigned int c = fgetc(dptr); feof(dptr) == 0; c = fgetc(dptr))
     	{
             	// bitwise op instead of tolower
-            c =(c &~(1<<5));
-            new_node->entry[index] =  c;
+            new_node->entry[index] =  c=(c &~(1<<5));
            
 	            // terminate current word
 		       if (new_node->entry[index] == '\n')
